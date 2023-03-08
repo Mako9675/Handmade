@@ -1,24 +1,34 @@
-# README
+# Handmade.com
+## サイト概要
+### サイトテーマ
+洋裁からDIYまで自分の作品/作成方法の投稿～ほかの人の作品の作り方を見ることができるコミュニティサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### テーマを選んだ理由
+趣味で手芸をしていて手作りが好きだが、DIYまでもまとめたサイトは見かけたことがないので手作りという大枠で
+自分が作ったオリジナルの型紙を投稿したり、参考にするためにほかの人の作品の作り方を共有したり検索できるサイトがあると
+例えば、自分の表現の場として交流できたり、素人さんからプロ作家さんまで手作り界（？）を盛り上げることができると思いました。
 
-Things you may want to cover:
+### ターゲットユーザー
+・手芸やDIYが好きな人
+・洋服やリノベ用のDIYをしたいけど自分の思った作り方がわからない人
+・10代～50代の女性/20代～40代の男性
+・趣味で自分の表現の場を広げたい人
 
-* Ruby version
+### 主な利用シーン
+・手芸/DIYの作り方を調べたいとき
+・自分の作ったものを共有したいとき
+・手芸/DIYの基本を知りたいとき
+・プロ初心者関係なく様々な年代の方と趣味で交流したいとき
+・ほかの人の作品を見たいとき
 
-* System dependencies
+## 設計書
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+- 
+## 使用素材
+使用検討中です
