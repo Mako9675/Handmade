@@ -1,0 +1,45 @@
+<header>
+  <nav class="navbar navbar-expand-lg", style="background-color:#afafb0;">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Handmade.com</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav my-2 my-md-0 mr-md-3">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "マイページ", public_user_path(current_user),class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "マイページ", admin_owners_path,class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "About", about_path,class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path ,class: 'nav-link text-dark' %>
+            </li>
+            <li>
+              <%= link_to "管理者ログイン", new_admin_session_path ,class: 'nav-link text-dark' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</header>
