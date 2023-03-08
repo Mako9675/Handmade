@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -8,38 +9,30 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/unsubscribe'
-    get 'users/withdrawal'
+  root to: 'homes#top'
+    get '/' => 'homes#top'
+    get 'homes/about' => 'homes#about', as: 'about'
+
+  namespace :public do
+    resources :users,  only: [:show, :edit, :update] do
+      get '/unsubscribe' => 'users#unsubscribe'
+      patch '/withdrawal' => 'users#withdrawa'
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
   end
   
-  get 'relationships/create'
-  get 'relationships/destroy'
-  get 'searches/search'
-  get 'comments/create'
-  get 'comments/destroy'
-  get 'favorites/create'
-  get 'favorites/destroy'
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
+  resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resource :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
+  
+  get 'searches/search' => "searches#search", as: 'search'
   
   namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
+    resource :owners,  only: [:show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
   end
   
   
