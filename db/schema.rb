@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_051807) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "post_id", null: false
-    t.string "comment", default: "", null: false
+    t.string "comment", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_051807) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name", default: "", null: false
+    t.string "name", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2023_03_09_051807) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
-    t.string "title", default: "", null: false
-    t.string "material", default: "", null: false
-    t.string "body", default: "", null: false
+    t.string "title", null: false
+    t.string "material", null: false
+    t.string "body", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

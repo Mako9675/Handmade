@@ -1,14 +1,27 @@
 class PostsController < ApplicationController
   def new
+    @post = Post.new
+    @genres = Genre.all
   end
 
   def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to post_path(@post.id), notice: "投稿が完了しました."
+    else
+      @user = current_user
+      @post = Post.new
+      render :new
+    end
   end
 
   def index
+    @genres = Genre.all
   end
 
   def show
+    @genres = Genre.all
   end
 
   def edit
@@ -18,5 +31,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  private
+  def post_params
+    params.require(:post).permit(:title, :material, :body, :genre_id)
   end
 end

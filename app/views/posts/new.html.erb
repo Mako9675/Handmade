@@ -1,2 +1,45 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    
+    <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
+      <h1>投稿フォーム</h1>
+      <%= form_with model: @post do |f| %>
+      
+      <div class="field">
+        <%= f.label :title,'タイトル' %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control' %>
+        <% if @post.errors.include?(:title) %>
+          <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
+        <% end %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :material,'材料' %><br />
+        <%= f.text_area :material, autocomplete: "material", class: 'form-control' %>
+        <% if @post.errors.include?(:material) %>
+          <p style="color: red;"><%= @post.errors.full_messages_for(:material).first %>
+        <% end %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :body,'作り方' %><br />
+        <%= f.text_area :body, autocomplete: "body", class: 'form-control' %>
+        <% if @post.errors.include?(:body) %>
+          <p style="color: red;"><%= @post.errors.full_messages_for(:body).first %>
+        <% end %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :genre_id,'ジャンル' %><br />
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "投稿", class: 'btn btn-sm btn-primary mx-1' %>
+      </div>
+      
+      <% end %>
+        
+    </div>
+  </div>
+</div>

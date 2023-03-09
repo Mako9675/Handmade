@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+  resources :posts, only: [:new, :index,:show,:edit,:create,:destroy,:update] do
     resource :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resource :owners,  only: [:show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, except: [:new, :show]
   end
   
   
