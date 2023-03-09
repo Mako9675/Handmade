@@ -2,12 +2,22 @@
   <div class='row'>
     
     <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
-      <h1>Posts#show</h1>
-      <p>Find me in app/views/posts/show.html.erb</p>
+      <h1>投稿詳細</h1>
+  		  
+        <h5><%= @post.title %></h5>
+        <p><%= @post.material %></p>
+        <p><%= @post.body %></p>
+        <p><%= @post.genre.name %></p>
+        <!--<td>コメント数: <%#= @post.comments.count %></td>-->
+        <!--<td id="favorite_btn_<%#= @post.id %>"><%#= render "favorites/favorite", post: @post %></td>-->
+        <% if @post.user == current_user %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %>
+          <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
+        <% end %>
+      
+      <p>作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %></p>
     </div>
-    
     <%= render 'layouts/sidebar', genres: @genres %>
     
-    </div>
   </div>
 </div>
