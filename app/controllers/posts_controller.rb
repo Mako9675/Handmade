@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all
     @genres = Genre.all
   end
 

@@ -9,12 +9,18 @@
         <ul class="navbar-nav my-2 my-md-0 mr-md-3">
           <% if user_signed_in? %>
             <li>
+              <%= link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
+            </li>
+            <li>
               <%= link_to "マイページ", public_user_path(current_user),class: 'nav-link text-dark' %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %>
             </li>
           <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
+            </li>
             <li>
               <%= link_to "マイページ", admin_owners_path,class: 'nav-link text-dark' %>
             </li>
