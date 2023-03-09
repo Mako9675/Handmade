@@ -18,6 +18,14 @@
       </div>
       
       <div class="field">
+        <%= f.label :email,'メールアドレス' %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        <% if @admin.errors.include?(:name) %>
+          <p style="color: red;"><%= @admin.errors.full_messages_for(:email).first %>
+        <% end %>
+      </div>
+      
+      <div class="field">
         <%= f.label :password,'パスワード' %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
         <% if @admin.errors.include?(:password) %>

@@ -7,7 +7,6 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :introduction
       t.string :email,              null: false
-      t.string :password, null: false
       t.string :encrypted_password, null: false
 
       ## Recoverable
