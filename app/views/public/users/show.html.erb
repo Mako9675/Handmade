@@ -1,2 +1,74 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    
+    <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
+      <h1>マイページ</h1>
+      <table class='table'>
+        <tr><%#= image_tag @user.get_profile_image(100,100) %></tr>
+        <tr>
+	      <th>名前</th>
+	      <th><%= @user.name %></th>
+        </tr>
+        <tr>
+	      <th>自己紹介</th>
+	      <th><%= @user.introduction %></th>
+        </tr>
+        <tr>
+          <th>フォロー</th>
+          <th>
+            <%= link_to public_user_followings_path(@user) do %> 
+              <%#= @user.followings.count %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th>フォロワー</th>
+          <th>
+            <%= link_to public_user_followers_path(@user) do %> 
+              <%#= @user.followers.count %>
+            <% end %>
+          </th>
+        </tr>
+      </table>
+      <div class = "m-1">
+        <% unless current_user == @user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォローを外す", public_user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "フォローする", public_user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class='row'>
+        <%= link_to '編集する', edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" %>
+      </div>
+      
+      <h4>自分の投稿</h4>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
+            <!--<td>コメント数: <%#= book.book_comments.count %></td>-->
+            <!--<td id="favorite_btn_<%#= book.id %>">-->
+            <%#= render "favorites/favorite", book: book %>
+            <!--</td>-->
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+      
+    <%= render 'layouts/sidebar', genres: @genres %>
+    
+  </div>
+</div>
+

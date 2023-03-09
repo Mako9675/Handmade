@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post.id), notice: "投稿が完了しました."
     else
+      flash[:notice] = "投稿に失敗しました"
       @user = current_user
       @post = Post.new
       render :new
@@ -27,12 +28,29 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "投稿を修正しました"
+      redirect_to post_path
+    else
+      flash[:notice] = "修正に失敗しました"
+      render 'edit'
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "投稿を削除しました"
+      redirect_to posts_path
+    else
+      flash[:notice] = "削除に失敗しました"
+      render 'show'
+    end
   end
   
   private
