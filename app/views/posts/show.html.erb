@@ -16,6 +16,11 @@
         <% end %>
       
       <p>作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %></p>
+      
+      <p id="favorite_buttons_<%= @post.id %>">
+        <%= render "favorites/favorite", post: @post %>
+      </p>
+      
     </div>
     <%= render 'layouts/sidebar', genres: @genres %>
     
