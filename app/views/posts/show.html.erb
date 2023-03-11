@@ -8,8 +8,6 @@
         <p><%= @post.material %></p>
         <p><%= @post.body %></p>
         <p><%= @post.genre.name %></p>
-        <!--<td>コメント数: <%#= @post.comments.count %></td>-->
-        <!--<td id="favorite_btn_<%#= @post.id %>"><%#= render "favorites/favorite", post: @post %></td>-->
         <% if @post.user == current_user %>
           <%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %>
           <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
@@ -21,6 +19,13 @@
         <%= render "favorites/favorite", post: @post %>
       </p>
       
+      <div id="comments_area"> 
+        <%= render 'comments/comment', post: @post %>
+      </div>
+      <div class="new-comment">
+        <%= render 'comments/form', post: @post, comment: @comment %>
+      </div>
+        
     </div>
     <%= render 'layouts/sidebar', genres: @genres %>
     

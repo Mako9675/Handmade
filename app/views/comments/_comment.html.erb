@@ -1,0 +1,27 @@
+<p>コメント数: <%= post.comments.count %></p>
+
+<% if post.comments.present? %>
+<table>
+  <tbody>
+    <% post.comments.each do |comment| %>
+      <tr>
+        
+        <td>
+          <%= link_to public_user_path(comment.user) do %>
+            <%= comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= comment.comment %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td>
+          <% if comment.user == current_user %>
+            <%= link_to '消去', post_comment_path(comment.post, comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>コメントはまだありません</p>
+<% end %>

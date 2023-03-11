@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    
     @posts = Post.all
     @genres = Genre.all
   end
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @genres = Genre.all
+    @comment = Comment.new
   end
 
   def edit
