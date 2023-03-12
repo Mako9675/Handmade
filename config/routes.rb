@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :users,  only: [:show, :edit, :update] do
-      get '/unsubscribe' => 'users#unsubscribe'
-      patch '/withdrawal' => 'users#withdrawa'
+      get '/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+      patch '/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
