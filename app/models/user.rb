@@ -9,6 +9,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   
+  has_many :follow, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :follow_user, through: :follow, source: :followed
+  has_many :follower_user, through: :follower, source: :follow
+  
   has_one_attached :profile_image
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -46,4 +51,17 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+  
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
+  # フォロー確認をおこなう
+  def following?(user)
+    following_user.include?(user)
+  end
+
 end

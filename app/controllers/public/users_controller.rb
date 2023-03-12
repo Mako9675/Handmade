@@ -7,6 +7,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @genres = Genre.all
     @posts = @user.posts
+    @follow = @user.following
+    @follower = @user.follower
   end
 
   def edit
@@ -32,17 +34,27 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+  
+  def followings
+    user = User.find(params[:user_id])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find(params[:user_id])
+    @users = user.followers
+  end
 
   
   private
   def user_params
     params.require(:user).permit(:name, :email, :introduction, :profile_image)
   end
-
+  
   def is_matching_login_user
     @user = User.find(params[:id])
     unless @user.id == current_user.id
-      redirect_to user_path(current_user)
+      redirect_to public_user_path(current_user)
     end
   end
   
