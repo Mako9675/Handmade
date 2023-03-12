@@ -7,8 +7,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @genres = Genre.all
     @posts = @user.posts
-    @follow = @user.following
-    @follower = @user.follower
+    @follow = @user.followings
+    @follower = @user.followers
   end
 
   def edit

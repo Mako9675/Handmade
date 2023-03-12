@@ -1,16 +1,16 @@
-class RelationshipsController < ApplicationController
+class Public::RelationshipsController < ApplicationController
   before_action :set_user, only: [:create, :destroy, :followings, :followers, ]
   
   def create
     @user = User.find(params[:user_id])
-    following = current_user.follow(@user)
-    following.save
+    current_user.follow(params[:user_id])
+    render :create
   end
 
   def destroy
     @user = User.find(params[:user_id])
-    following = current_user.follow(@user)
-    following.destroy
+    current_user.unfollow(params[:user_id])
+    render :destroy
   end
   
   def followings

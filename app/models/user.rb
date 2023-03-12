@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   
-  has_many :follow, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :follow_user, through: :follow, source: :followed
-  has_many :follower_user, through: :follower, source: :follow
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   
   has_one_attached :profile_image
   
@@ -53,15 +53,15 @@ class User < ApplicationRecord
   end
   
   def follow(user_id)
-    follower.create(followed_id: user_id)
+    relationships.create(followed_id: user_id)
   end
   # ユーザーのフォローを外す
   def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+   relationships.find_by(followed_id: user_id).destroy
   end
   # フォロー確認をおこなう
   def following?(user)
-    following_user.include?(user)
+    followings.include?(user)
   end
 
 end

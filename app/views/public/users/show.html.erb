@@ -15,8 +15,8 @@
         </tr>
         <tr>
           <th>フォロー</th>
-          <th>
-            <%= link_to public_user_follow_path(@user) do %> 
+          <td id="follow_count">
+            <%= link_to public_user_followings_path(@user) do %> 
               <%= @follow.count %>
             <% end %>
           </th>
@@ -24,7 +24,7 @@
         <tr>
           <th>フォロワー</th>
           <th>
-            <%= link_to follower_public_user_path(@user) do %> 
+            <%= link_to public_user_followers_path(@user) do %> 
               <%= @follower.count %>
             <% end %>
           </th>
@@ -32,8 +32,8 @@
       </table>
       
       <% if user_signed_in? && current_user.id != @user.id %>
-        <div id="follow-ajax">
-          <%= render "relationships/follow", user: @user %>
+        <div class="follow_btn_<%= @user.id %>">
+          <%= render "public/relationships/follow", user: @user %>
         </div>
       <% end %>
       
