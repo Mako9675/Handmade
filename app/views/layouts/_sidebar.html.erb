@@ -1,9 +1,9 @@
 <div class="col-3 mt-5">
   <table class="table table-bordered">
       <div class="search_form">
-    <%= form_with(url: search_path, local: true, method: :get, class: "post-search-form") do |f| %>
-   <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "post-search-input" %>
-   <%= f.submit "検索", class: "btn btn-primary" %>
+    <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
+   <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
+   <%= f.submit "検索", class: "btn btn-sm btn-success" %>
 <% end %>
   </div>
     <thead>

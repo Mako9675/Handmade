@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   def search
     
-    @genre = Genre.all
+    @genres = Genre.all
     
     @posts = Post.search(params[:keyword])
   end
