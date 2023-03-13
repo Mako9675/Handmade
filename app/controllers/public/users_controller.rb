@@ -2,6 +2,9 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :is_matching_login_user, only: [:update, :edit, ]
   
+  def index
+    @users = User.all
+  end
   
   def show
     @user = User.find(params[:id])
@@ -61,4 +64,6 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
+  
 end
