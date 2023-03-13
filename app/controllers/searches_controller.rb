@@ -3,6 +3,6 @@ class SearchesController < ApplicationController
     
     @genre = Genre.all
     
-    @posts = Postgit .search(params[:keyword])
+    @posts = Post.search(params[:keyword])
   end
 end
