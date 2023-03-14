@@ -7,33 +7,29 @@
         <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
         <tr>
 	      <th>名前</th>
-	      <th><%= @user.name %></th>
+	      <td><%= @user.name %></td>
         </tr>
         <tr>
 	      <th>自己紹介</th>
-	      <th><%= @user.introduction %></th>
+	      <td><%= @user.introduction %></td>
         </tr>
         <tr>
           <th>フォロー</th>
-          <td id="follow_count">
-            <%= link_to public_user_followings_path(@user) do %> 
-              <%= @follow.count %>
-            <% end %>
-          </th>
+          <td id="follow_count_<%= @user.id %>">
+            <%= render "public/relationships/follow", user: @user, follow: @follow %>
+          </td>
         </tr>
         <tr>
           <th>フォロワー</th>
-          <th>
-            <%= link_to public_user_followers_path(@user) do %> 
-              <%= @follower.count %>
-            <% end %>
-          </th>
+          <td id="follower_count_<%= @user.id %>">
+            <%= render "public/relationships/follower", user: @user, follower: @follower %>
+          </td>
         </tr>
       </table>
       
       <% if user_signed_in? && current_user.id != @user.id %>
-        <div class="follow_btn_<%= @user.id %>">
-          <%= render "public/relationships/follow", user: @user %>
+        <div id="follow_btn_<%= @user.id %>">
+          <%= render "public/relationships/follow_bottan", user: @user %>
         </div>
       <% end %>
       
@@ -46,7 +42,7 @@
         </div>
       <% end %>
       
-      <h4>自分の投稿</h4>
+      <h4><%= @user.name %>の投稿</h4>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -59,7 +55,7 @@
           <tr>
             <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
             <td>コメント数: <%= post.comments.count %></td>
-            <td id="favorite_btn_<%= post.id %>">
+            <td id="favorite_buttons_<%= post.id %>">
             <%= render "favorites/favorite", post: post %>
             </td>
           </tr>

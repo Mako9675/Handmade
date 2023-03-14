@@ -1,1 +1,2 @@
-$('.follow-btn_<%= @user.id %>').html("<%= j(render "public/relationships/follow", locals: {user: @user}) %>");
+$('#follow_btn_<%= @user.id %>').html('<%= j(render "public/relationships/follow_bottan", user: @user) %>');
+
