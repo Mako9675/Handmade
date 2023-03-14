@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top]
   before_action :is_matching_login_user, only: [:update, :edit, ]
+  before_action :set_user, only: [:followings, :followers]
   
   def show
     @user = User.find(params[:id])
@@ -35,13 +36,13 @@ class Public::UsersController < ApplicationController
   end
   
   def followings
-    user = User.find(params[:user_id])
-    @users = user.followings
+    @user = User.find(params[:user_id])
+    @users = @user.followings
   end
 
   def followers
-    user = User.find(params[:user_id])
-    @users = user.followers
+    @user = User.find(params[:user_id])
+    @users = @user.followers
   end
 
   
