@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_051807) do
     t.string "title", null: false
     t.string "material", null: false
     t.string "body", null: false
-    t.boolean "is_draft", null: false
+    t.integer "status", default: 0, null: false
   end
 
   create_table "relationships", force: :cascade do |t|

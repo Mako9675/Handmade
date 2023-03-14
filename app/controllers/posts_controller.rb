@@ -7,29 +7,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    
-    if params[:post]
-      if @post.save(context: :publicize)
-        redirect_to post_path(@post.id), notice: "投稿が完了しました."
-      else
-        flash[:notice] = "投稿に失敗しました"
-        @user = current_user
-        @post = Post.new
-        render :new
-      end
+    if @post.save
+      redirect_to post_path(@post.id), notice: "投稿が完了しました."
     else
-      if @post.update(is_draft: true)
-        redirect_to public_user(current_user), notice: "下書きに保存しました"
-      else
-        flash[:notice] = "下書き保存に失敗しました"
-        render :new
-      end
+      flash[:notice] = "投稿に失敗しました"
+      @user = current_user
+      @post = Post.new
+      render :new
     end
   end
 
   def index
-    
-    @posts = Post.all
+    @posts = Post.published.page(params[:page]).reverse_order
+    @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @genres = Genre.all
   end
 
@@ -45,37 +35,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    
-    if params[:publicize_draft]
-      @post.attributes = post_params.merge(is_draft: false)
-      if @post.save(context: :publicize)
-        redirect_to post_path(@post.id)
-        flash[:notice] = "下書きを公開しました"
-      else
-        @post.is_draft = true
-        render :edit, alert: "下書きの公開に失敗しました"
-      end
-      
-    elsif params[:update_post]
-      @post.attributes = post_params
-      if @post.save(context: :publicize)
-        redirect_to post_path(@post.id)
-        flash[:notice] = "投稿を修正しました"
-      else
-        render :edit
-        flash[:notice] = "修正に失敗しました"
-      end
+    if @post.update(post_params)
+      flash[:notice] = "投稿を修正しました"
+      redirect_to post_path
     else
-      if @post.update(post_params)
-        redirect_to post_path(@post.id)
-        flash[:notice] = "下書きを修正しました"
-      else
-        render :edit
-        flash[:notice] = "修正に失敗しました"
-      end
+      flash[:notice] = "修正に失敗しました"
+      render 'edit'
     end
   end
-
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -87,9 +54,14 @@ class PostsController < ApplicationController
     end
   end
   
+  def confirm
+    @posts = current_user.posts.draft.page(params[:page]).reverse_order
+    @genres = Genre.all
+  end
+  
   private
   def post_params
-    params.require(:post).permit(:title, :material, :body, :genre_id,:is_draft,:post_image)
+    params.require(:post).permit(:title, :material, :body, :genre_id,:status,:post_image)
   end
   
   

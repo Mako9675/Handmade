@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :index,:show,:edit,:create,:destroy,:update] do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    collection do
+      get 'confirm'
+    end
   end
   
   get 'searches/search' => "searches#search", as: 'search'

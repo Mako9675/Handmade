@@ -6,15 +6,12 @@ class Post < ApplicationRecord
     
   has_one_attached :post_image
   
-  with_options presence: true, on: :publicize do
-    validates :title
-    validates :material
-    validates :body
-  end
+  enum status: { published: 0, draft: 1 }
+  #published = 投稿する
   
-  validate :title, on: :publicize
-  validate :material, on: :publicize
-  validate :body, on: :publicize
+  validate :title
+  validate :material
+  validate :body
     
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

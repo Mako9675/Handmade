@@ -60,6 +60,7 @@ gem 'devise' #デバイス
 gem 'jquery-rails' #非同期通信化
 gem 'kaminari','~> 1.2.1' #ページネーション
 gem 'devise-i18n' #日本語化
+gem 'enum_help' #enumの日本語化
 
 gem 'dotenv-rails'
 group :production do
@@ -69,3 +70,4 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 end
+

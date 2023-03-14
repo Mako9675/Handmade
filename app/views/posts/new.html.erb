@@ -35,10 +35,10 @@
       </div>
       
       <div class="actions">
-        <div class="form-inline mx-auto">
-          <%= f.submit "投稿する", :name => 'post', class: 'btn btn-sm btn-primary mx-1' %>
-          <%= f.submit "下書きに保存する", :name => 'draft', class: 'btn btn-sm btn-primary mx-1' %>
+        <div class="form-group">
+          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
         </div>
+        <%= f.submit '投稿する', class: "btn btn-success" %>
       </div>
       
       <% end %>

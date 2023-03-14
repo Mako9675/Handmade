@@ -41,6 +41,9 @@
         <div class='row'>
           <%= link_to '編集する', edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" %>
         </div>
+        <div class='row'>
+          <%= link_to "下書き一覧", confirm_posts_path, class: 'btn btn-info' %>
+        </div>
       <% end %>
       
       <h4>自分の投稿</h4>

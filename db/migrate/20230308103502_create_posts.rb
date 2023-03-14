@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :title,               null: false
       t.string :material,            null: false
       t.string :body,                null: false
-      t.boolean :is_draft, null: false
+      t.integer :status , null: false, default: 0
     end
   end
 end
