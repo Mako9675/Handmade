@@ -10,7 +10,6 @@
         <p><%= @post.genre.name %></p>
         <% if @post.user == current_user %>
           <%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %>
-          <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
         <% end %>
       
       <p>作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %></p>

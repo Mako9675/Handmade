@@ -33,8 +33,17 @@
         <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
       </div>
       
-      <div class="actions">
-        <%= f.submit "投稿を保存する", class: 'btn btn-sm btn-primary mx-1' %>
+      <div class="form-inline mx-auto">
+        <% if @post.is_draft == true %>
+          <%= f.submit "投稿を公開", :name => 'publicize_draft', class: 'btn btn-sm btn-primary mx-1' %>
+          <%= f.submit "下書きを更新", :name => 'update_draft', class: 'btn btn-sm btn-success mx-1' %>
+        <% else %>
+          <%= f.submit "変更を保存する", :name => 'update_post', class: 'btn btn-sm btn-success mx-1' %>
+        <% end %>
+      </div>
+      
+      <div>
+        <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
       </div>
       
       <% end %>

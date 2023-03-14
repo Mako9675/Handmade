@@ -35,7 +35,10 @@
       </div>
       
       <div class="actions">
-        <%= f.submit "投稿", class: 'btn btn-sm btn-primary mx-1' %>
+        <div class="form-inline mx-auto">
+          <%= f.submit "投稿する", :name => 'post', class: 'btn btn-sm btn-primary mx-1' %>
+          <%= f.submit "下書きに保存する", :name => 'draft', class: 'btn btn-sm btn-primary mx-1' %>
+        </div>
       </div>
       
       <% end %>
