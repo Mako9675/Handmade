@@ -1,10 +1,23 @@
 <header>
   <nav class="navbar navbar-expand-lg", style="background-color:#afafb0;">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>Handmade.com</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <% if user_signed_in? %>
+        <a class="navbar-brand" href="/"><span>Handmade.com</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% elsif admin_signed_in? %>
+        <a class="navbar-brand" href="/admin/top"><span>Handmade.com</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% else %>
+        <a class="navbar-brand" href="/"><span>Handmade.com</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <% end %>
+      
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav my-2 my-md-0 mr-md-3">
           <% if user_signed_in? %>
@@ -22,16 +35,7 @@
             </li>
           <% elsif admin_signed_in? %>
             <li>
-              <%= link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
-            </li>
-            <li>
               <%= link_to "マイページ", admin_owners_path,class: 'nav-link text-dark' %>
-            </li>
-            <li>
-              <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark' %>
-            </li>
-            <li>
-              <%= link_to "投稿する", new_post_path,class: 'nav-link text-dark' %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>

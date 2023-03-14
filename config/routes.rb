@@ -31,8 +31,11 @@ Rails.application.routes.draw do
   get 'searches/search' => "searches#search", as: 'search'
   
   namespace :admin do
+    get '/top' => 'homes#top', as: 'top'
     resource :owners,  only: [:show, :edit, :update]
     resources :genres, except: [:new, :show]
+    resources :users, only: [:index, :show, :edit, :update]
+    patch "withdrawal/:id" => "users#withdrawal", as: "withdrawal"
   end
   
   
