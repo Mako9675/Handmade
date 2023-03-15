@@ -15,8 +15,10 @@
         </tr>
         <tr>
           <th>フォロー</th>
-          <td id="follow_count_<%= @user.id %>">
-            <%= render "public/relationships/follow", user: @user, follow: @follow %>
+          <td>
+            <%= link_to public_user_followings_path(@user) do %> 
+              <%= @follow.count %>
+            <% end %>
           </td>
         </tr>
         <tr>
