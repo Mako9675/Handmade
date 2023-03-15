@@ -55,8 +55,9 @@
           <tr>
             <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
             <td>コメント数: <%= post.comments.count %></td>
-            <td id="favorite_buttons_<%= post.id %>">
-            <%= render "favorites/favorite", post: post %>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= post.favorites.count %> いいね
             </td>
           </tr>
         <% end %>

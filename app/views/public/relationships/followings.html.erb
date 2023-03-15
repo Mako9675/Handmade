@@ -5,15 +5,16 @@
       <h5>フォロー一覧</h5><br/>
       <table class='table table-hover table-inverse'>
         <thead>
-            <tr>
-          <th>ユーザー</th>
+          <tr>
+            <th>ユーザー</th>
+            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
               <td><%= user.name %></td>
-              <td><%= link_to '会員ページ',public_user_path(user.id), class: "user_#{user.id}" %></td>
+              <td><%= link_to '会員ページ',public_user_path(user.id), class: "user_#{user.id} btn btn-info btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
