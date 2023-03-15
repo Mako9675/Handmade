@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @genres = Genre.all
     @comment = Comment.new
+    @genre = @post.genre
   end
 
   def edit

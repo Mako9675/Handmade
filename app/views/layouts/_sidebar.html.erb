@@ -11,11 +11,11 @@
         <th class="text-center">ジャンル</th>
       </tr>
     </thead>
-    <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+    <%= form_tag posts_path, method: :get, class: 'boards_searchForm' do %>
       <% genres.each do |genre| %>
       <tbody>
         <tr>
-          <td><%= link_to genre.name, genres_path(name: genre.id) %></td>
+          <td><%= link_to genre.name, genres_path(id: genre.id) %></td>
         </tr>
       </tbody>
       <% end %>

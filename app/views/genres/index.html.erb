@@ -11,10 +11,10 @@
           </tr>
         </thead>
         <tbody>
-        <% @genre.posts.each do |post| %>
+        <% @genre.post.each do |post| %>
           <tr>
             <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
-            <td><%= post.genres.name %></td>
+            <td><%= post.genre.name %></td>
             <td>コメント数: <%= post.comments.count %></td>
             <td>
               <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>

@@ -24,7 +24,7 @@ class User < ApplicationRecord
   validates :profile_image, presence: false
   validates :password, length: { minimum: 6 }, on: :create
   validates :encrypted_password, presence: true, on: :create
-  validates :password, presence: true, unless: :uid?, on: :create
+  validates :password, presence: true, on: :create
   
   
   def get_profile_image(width, height)
