@@ -15,13 +15,6 @@
             <tr>
               <td><%= user.name %></td>
               <td><%= link_to '会員ページ',public_user_path(user.id), class: "user_#{user.id} btn btn-info btn-sm" %></td>
-              <% if user_signed_in? && current_user.id != @user.id %>
-                <td>
-                  <div id="follow_btn_<%= @user.id %>">
-                    <%= render "public/relationships/follow_bottan", user: @user %>
-                  </div>
-                </td>
-              <% end %>
             </tr>
           <% end %>
         </tbody>
