@@ -1,7 +1,8 @@
 <div class='container'>
   <div class='row'>
+    
     <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
-      <h1>下書き一覧</h1>
+      <h1><%= @genre.name %>の投稿一覧</h1>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -10,12 +11,14 @@
           </tr>
         </thead>
         <tbody>
-        <% @posts.each do |post| %>
+        <% @genre.posts.each do |post| %>
           <tr>
             <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
+            <td><%= post.genres.name %></td>
             <td>コメント数: <%= post.comments.count %></td>
-            <td id="favorite_buttons_<%= post.id %>">
-            <%= render "favorites/favorite", post: post %>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= post.favorites.count %> いいね
             </td>
           </tr>
         <% end %>

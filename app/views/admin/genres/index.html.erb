@@ -1,20 +1,13 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
+    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
       <h1>ジャンル登録</h1>
       
-      <%= form_with model: [:admin,@genre],local: true do |f| %>
-        <%= f.label :name, 'ジャンル名' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      
-        <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
-        
-      <% end %>
-      
+      <h3>ジャンル一覧</h3>
       <table>
         <thead>
           <tr>
-            <th>ジャンル一覧</th>
+            <th></th>
           </tr>
         </thead>
         
@@ -22,20 +15,27 @@
           <% @genres.each do |genre| %>
           
           <tr>
-            <th>
+            <td>
               <%= genre.name %>
-            </th>
-            <th>
+            </td>
+            <td>
               <%= link_to '編集', edit_admin_owners_path(genre), class: 'btn btn-sm btn-primary mx-1' %>
-            </th>
-            <th>
               <%= link_to '削除',  admin_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
-            </th>
+            </td>
           </tr>
         </tbody>
       </table>
       
       <% end %>
      </div>
+     <div class="col-4 mt-5">
+       <div class="genre_form">
+        <%= form_with model: [:admin,@genre],local: true do |f| %>
+          <%= f.label :name, 'ジャンル名' %>
+          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.submit '追加', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

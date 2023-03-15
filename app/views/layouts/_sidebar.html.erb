@@ -1,22 +1,24 @@
-<div class="col-3 mt-5">
-  <table class="table table-bordered">
-    <div class="search_form">
+<div class="col-4 mt-5">
+  <div class="search_form">
       <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
         <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
         <%= f.submit "検索", class: "btn btn-sm btn-success" %>
       <% end %>
     </div>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th class="text-center">ジャンル</th>
       </tr>
     </thead>
-    <% genres.each do |genre| %>
-    <tbody>
-      <tr>
-        <td><%= genre.name %></td>
-      </tr>
-    </tbody>
+    <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+      <% genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td><%= link_to genre.name, genres_path(name: genre.id) %></td>
+        </tr>
+      </tbody>
+      <% end %>
     <% end %>
   </table>
 </div>
