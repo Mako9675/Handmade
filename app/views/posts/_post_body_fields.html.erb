@@ -1,17 +1,19 @@
 <div class="nested-fields">
   <div class="row mx-auto">
     <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
-      <%= f.text_area :process_image, class: 'form-control' %>
-      <% if @body.errors.include?(:process_image) %>
-        <p style="color: red;"><%= @body.errors.full_messages_for(:process_image).first %>
-      <% end %>
+      <div class="form-group">
+        <%= f.label :process_image, '作り方画像' %>
+        <%= f.file_field :process_image, class: "form-control-file post_image", accept: 'image/*' %>
+        <% if @body.errors.include?(:process_image) %>
+          <p style="color: red;"><%= @body.errors.full_messages_for(:process_image).first %>
+        <% end %>
+      </div>
       
-      <%= f.text_area :explanation, class: 'form-control' %>
+      <%= f.text_area :explanation, placeholder: "作り方", class: 'form-control' %>
       <% if @body.errors.include?(:explanation) %>
         <p style="color: red;"><%= @body.errors.full_messages_for(:explanation).first %>
       <% end %>
       
-      <%= f.hidden_field :post_id, :value => @post.id %>
-   <%= link_to_remove_association "remove task", f %>
+   <%= link_to_remove_association "フォームを削除", f %>
   </div>
 </div>
