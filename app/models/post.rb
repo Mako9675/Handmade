@@ -7,8 +7,6 @@ class Post < ApplicationRecord
   has_many :post_materials, dependent: :destroy
   has_many :post_makes, dependent: :destroy
   accepts_nested_attributes_for :post_materials, :post_makes, allow_destroy: true
-    
-  has_one_attached :post_image
   
   enum status: { published: 0, draft: 1 }
   #published = 投稿する

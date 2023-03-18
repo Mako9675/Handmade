@@ -30,7 +30,8 @@ class PostsController < ApplicationController
     @genres = Genre.all
     @comment = Comment.new
     @genre = @post.genre
-    @material = @post.post_materials
+    @materials = @post.post_materials.where(params[:id])
+    @makes = @post.post_makes.where(params[:id])
   end
 
   def edit
@@ -67,7 +68,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :material, :body, :genre_id,:status,:post_image,
                                  post_materials_attributes:[:post_id, :ing_name, :quantity, :_destroy],
-                                 post_makes_attributes:[:explanation, :process_image, :order_no, :_destroy])
+                                 post_makes_attributes:[:explanation, :process_image, :order_no, :post_image, :_destroy])
                                  .merge(user_id: current_user.id)
   end
   
