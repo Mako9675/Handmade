@@ -19,7 +19,7 @@
             材料
           </div>
             <%= f.fields_for :post_materials do |form| %>
-              <%= render "post_materials_fields", :f => form %>
+              <%= render "post_materials_fields", :f => form, :material => form.object %>
             <% end %>
             <!-- １）追加ボタンの記述 -->
             <div class="add-botton-box">
@@ -36,7 +36,7 @@
             作り方
           </div>
             <%= f.fields_for :post_makes do |form| %>
-              <%= render "post_body_fields", :f => form %>
+              <%= render "post_body_fields", :f => form, :body => form.object %>
             <% end %>
             <!-- １）追加ボタンの記述 -->
             <div class="add-botton-box">

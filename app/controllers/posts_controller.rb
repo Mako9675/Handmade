@@ -30,12 +30,14 @@ class PostsController < ApplicationController
     @genres = Genre.all
     @comment = Comment.new
     @genre = @post.genre
-    @materials = @post.post_materials.where(params[:id])
-    @makes = @post.post_makes.where(params[:id])
+    @materials = @post.post_materials
+    @makes = @post.post_makes
   end
 
   def edit
     @post = Post.find(params[:id])
+    @material = PostMaterial.new
+    @body = PostMake.new
   end
 
   def update

@@ -5,22 +5,27 @@
       <h1>投稿詳細</h1>
   		  
         <h5><%= @post.title %></h5>
+        
+        <h6>材料</h6>
         <table class='table table-inverse'>
-        <% @materials.each do |m| %>
-        <tr>
-          <td><%= m.ing_name %></td>
-          <td><%= m.quantity %></td>
-        </tr>
-        <% end %>
-        
-        <% @makes.each do |make| %>
-        <tr>
-          <td><%= image_tag make.get_post_image(100,100) %></td>
-          <td><%= make.explanation %></td>
-        </tr>
-        <% end %>
-        
+          <% @materials.each do |m| %>
+            <tr>
+              <td><%= m.ing_name %></td>
+              <td><%= m.quantity %></td>
+            </tr>
+          <% end %>
         </table>
+        
+        <h6>作り方</h6>
+        <table class='table table-inverse'>
+          <% @makes.each do |make| %>
+            <tr>
+              <td><%= image_tag make.get_post_image(100,100) %></td>
+              <td><%= make.explanation %></td>
+            </tr>
+          <% end %>
+        </table>
+        
         <p>ジャンル：<%= link_to @genre.name, genres_path(id: @genre.id) %></p>
         
         <% if @post.user == current_user %>

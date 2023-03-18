@@ -19,15 +19,15 @@
             <%= link_to public_user_followings_path(@user) do %> 
               <%= @follow.count %>
             <% end %>
-          </th>
+          </td>
         </tr>
         <tr>
           <th>フォロワー</th>
-          <th>
+          <td>
             <%= link_to public_user_followers_path(@user) do %> 
               <%= @follower.count %>
             <% end %>
-          </th>
+          </td>
         </tr>
       </table>
       

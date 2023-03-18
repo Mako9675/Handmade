@@ -4,28 +4,52 @@
     <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
       <h1>投稿編集</h1>
       <%= form_with model: @post do |f| %>
-      <div class="field">
-        <%= f.label :title,'タイトル' %><br />
-        <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control' %>
-        <% if @post.errors.include?(:title) %>
-          <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
-        <% end %>
+      <div class ="m-2">
+        <div class="field">
+          <%= f.label :title,'タイトル' %><br />
+          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control' %>
+          <% if @post.errors.include?(:title) %>
+            <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
+          <% end %>
+        </div>
       </div>
       
-      <div class="field">
-        <%= f.label :material,'材料' %><br />
-        <%= f.text_area :material, autocomplete: "material", class: 'form-control' %>
-        <% if @post.errors.include?(:material) %>
-          <p style="color: red;"><%= @post.errors.full_messages_for(:material).first %>
-        <% end %>
+     <div class="parent">
+        <div class="form-box">
+          <div class="forms-item">
+            <h4>材料</h4>
+          </div>
+          <div class ="m-2">
+            <%= f.fields_for :post_materials do |form| %>
+              <%= render "post_materials_fields", :f => form, :material => form.object %>
+            <% end %>
+            <!-- １）追加ボタンの記述 -->
+            <div class="add-botton-box">
+              <%= link_to_add_association "+フォームを追加する", f, :post_materials, partial: "post_materials_fields", render_options: { locals: { material: @material } } %>
+            </div>
+          </div>
+        </div>
+        
+        <div id="detail-association-insertion-point"></div>
       </div>
       
-      <div class="field">
-        <%= f.label :body,'作り方' %><br />
-        <%= f.text_area :body, autocomplete: "body", class: 'form-control' %>
-        <% if @post.errors.include?(:body) %>
-          <p style="color: red;"><%= @post.errors.full_messages_for(:body).first %>
-        <% end %>
+      <div class="parent">
+        <div class="form-box">
+          <div class="forms-item">
+            <h4>作り方</h4>
+          </div>
+          <div class ="m-2">
+            <%= f.fields_for :post_makes do |form| %>
+              <%= render "post_body_fields", :f => form, :body => form.object %>
+            <% end %>
+            <!-- １）追加ボタンの記述 -->
+            <div class="add-botton-box">
+              <%= link_to_add_association "+フォームを追加する", f, :post_makes, partial: "posts/post_body_fields", render_options: {locals: { body: @body }} %>
+            </div>
+          </div>
+        </div>
+        
+        <div id="detail-association-insertion-point"></div>
       </div>
       
       <div class="field">

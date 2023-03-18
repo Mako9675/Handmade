@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:top]
   before_action :is_matching_login_user, only: [:update, :edit, ]
   before_action :set_user, only: [:followings, :followers]
   
