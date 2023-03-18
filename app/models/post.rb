@@ -3,6 +3,10 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :genre, optional: true
+  
+  has_many :post_materials, dependent: :destroy
+  has_many :post_makes, dependent: :destroy
+  accepts_nested_attributes_for :post_materials, :post_makes, allow_destroy: true
     
   has_one_attached :post_image
   
@@ -10,7 +14,6 @@ class Post < ApplicationRecord
   #published = 投稿する
   
   validate :title
-  validate :material
   validate :body
     
   def favorited_by?(user)

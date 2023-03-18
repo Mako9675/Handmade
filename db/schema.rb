@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_15_113925) do
+ActiveRecord::Schema.define(version: 2023_03_18_075210) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,14 +75,31 @@ ActiveRecord::Schema.define(version: 2023_03_15_113925) do
     t.string "name", null: false
   end
 
+  create_table "post_makes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.text "explanation"
+    t.string "process_image"
+    t.integer "order_no"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_makes_on_post_id"
+  end
+
+  create_table "post_materials", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.string "ing_name"
+    t.string "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_materials_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
-    t.string "material", null: false
-    t.string "body", null: false
     t.integer "status", default: 0, null: false
   end
 
@@ -110,4 +127,6 @@ ActiveRecord::Schema.define(version: 2023_03_15_113925) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_makes", "posts"
+  add_foreign_key "post_materials", "posts"
 end

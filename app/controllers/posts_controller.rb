@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @genres = Genre.all
+    @material = @post.post_materials.build
+    @body = @post.post_makes.build
   end
 
   def create
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
     @genres = Genre.all
     @comment = Comment.new
     @genre = @post.genre
+    @material = @post.post_materials
   end
 
   def edit
@@ -62,7 +65,10 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:title, :material, :body, :genre_id,:status,:post_image)
+    params.require(:post).permit(:title, :material, :body, :genre_id,:status,:post_image,
+                                 post_materials_attributes:[:post_id, :ing_name, :quantity, :_destroy],
+                                 post_makes_attributes:[:explanation, :process_image, :order_no, :_destroy])
+                                 .merge(user_id: current_user.id)
   end
   
   

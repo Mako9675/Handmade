@@ -17,4 +17,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application" 
 
+require("jquery")
+require("@nathanvda/cocoon")
+
 import '@fortawesome/fontawesome-free/js/all'
