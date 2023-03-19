@@ -4,29 +4,19 @@
       <h1>ジャンル登録</h1>
       
       <h3>ジャンル一覧</h3>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
-        
-        <tbody>
+        <table>
           <% @genres.each do |genre| %>
-          
           <tr>
             <td>
               <%= genre.name %>
             </td>
             <td>
-              <%= link_to '編集', edit_admin_owners_path(genre), class: 'btn btn-sm btn-primary mx-1' %>
+              <%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-sm btn-primary mx-1' %>
               <%= link_to '削除',  admin_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
             </td>
           </tr>
-        </tbody>
-      </table>
-      
-      <% end %>
+          <% end %>
+        </table>
      </div>
      <div class="col-4 mt-5">
        <div class="genre_form">
