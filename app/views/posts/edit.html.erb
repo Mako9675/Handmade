@@ -64,7 +64,9 @@
       </div>
       
       <div>
-        <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
+        <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
+          削除する <i class="fas fa-trash-alt"></i>
+        <% end %>
       </div>
       
       <% end %>

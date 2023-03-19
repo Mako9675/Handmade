@@ -37,10 +37,14 @@
       
       <% if current_user == @user %>
         <div class='row'>
-          <%= link_to '編集する', edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" %>
+          <%= link_to edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" do %>
+            編集する <i class="fas fa-user-cog"></i>
+          <% end %>
         </div>
         <div class='row'>
-          <%= link_to "下書き一覧", confirm_posts_path, class: 'btn btn-info' %>
+          <%= link_to confirm_posts_path, class: 'btn btn-info' do %>
+            下書き一覧 <i class="far fa-file"></i>
+          <% end %>
         </div>
       <% end %>
       

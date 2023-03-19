@@ -31,36 +31,56 @@
         <ul class="navbar-nav my-2 my-md-0 mr-md-3">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
+              <%= link_to posts_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-tags"></i> 投稿一覧
+              <% end %>
             </li>
             <li>
-              <%= link_to "マイページ", public_user_path(current_user),class: 'nav-link text-dark' %>
+              <%= link_to public_user_path(current_user),class: 'nav-link text-dark' do %>
+                <i class="far fa-user-circle"></i> マイページ
+              <% end %>
             </li>
             <li>
-              <%= link_to "投稿する", new_post_path,class: 'nav-link text-dark' %>
+              <%= link_to new_post_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-pencil-alt"></i> 投稿する
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %>
+              <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
             </li>
           <% elsif admin_signed_in? %>
             <li>
-              <%= link_to "マイページ", admin_owners_path,class: 'nav-link text-dark' %>
+              <%= link_to admin_owners_path,class: 'nav-link text-dark' do %>
+                <i class="far fa-user-circle"></i> マイページ
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
+              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
             </li>
           <% else %>
             <li>
-              <%= link_to "About", about_path,class: 'nav-link text-dark' %>
+              <%= link_to about_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-question"></i> About
+              <% end %>
             </li>
             <li>
-              <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-dark' %>
+              <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+                <i class="fas fa-user-edit"></i> 新規登録
+              <% end %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path ,class: 'nav-link text-dark' %>
+              <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
             </li>
             <li>
-              <%= link_to "管理者ログイン", new_admin_session_path ,class: 'nav-link text-dark' %>
+              <%= link_to new_admin_session_path ,class: 'nav-link text-dark' do %>
+                <i class="fas fa-wrench"></i> 管理者ログイン
+              <% end %>
             </li>
           <% end %>
         </ul>

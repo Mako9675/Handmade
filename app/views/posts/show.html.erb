@@ -6,7 +6,9 @@
   		  
         <h5><%= @post.title %>
           <% if admin_signed_in? %>
-            <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
+            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
+              削除する <i class="fas fa-trash-alt"></i>
+            <% end %>
           <% end %>
         </h5>
         
@@ -33,7 +35,9 @@
         <p>ジャンル：<%= link_to @genre.name, genres_path(id: @genre.id) %></p>
         
         <% if @post.user == current_user %>
-          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %>
+          <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" do %>
+            編集する <i class="far fa-edit"></i>
+          <% end %>
         <% end %>
       
       <p>作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %></p>
