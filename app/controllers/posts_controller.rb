@@ -69,8 +69,8 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :material, :body, :genre_id,:status,:post_image,
-                                 post_materials_attributes:[:post_id, :ing_name, :quantity, :_destroy],
-                                 post_makes_attributes:[:explanation, :process_image, :order_no, :post_image, :_destroy])
+                                 post_materials_attributes:[:id, :post_id, :ing_name, :quantity, :_destroy],
+                                 post_makes_attributes:[:id, :explanation, :process_image, :order_no, :post_image, :_destroy])
                                  .merge(user_id: current_user.id)
   end
   
