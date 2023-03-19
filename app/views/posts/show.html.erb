@@ -4,7 +4,11 @@
     <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
       <h1>投稿詳細</h1>
   		  
-        <h5><%= @post.title %></h5>
+        <h5><%= @post.title %>
+          <% if admin_signed_in? %>
+            <%= link_to '削除する', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%>
+          <% end %>
+        </h5>
         
         <h6>材料</h6>
         <table class='table table-inverse'>
