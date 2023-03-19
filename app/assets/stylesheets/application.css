@@ -21,3 +21,13 @@
     box-sizing: border-box;
     /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
+
+footer{
+    position: absolute;/* ←絶対位置 */
+    bottom: 0;
+    
+    /* 以下 背景色やテキストカラーなどはお好みで指定してください */
+    background: #1d1b3f;
+    color: #fff;
+    text-align: center;
+}
