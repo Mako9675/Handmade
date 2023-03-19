@@ -1,7 +1,11 @@
 <div class = "m-1">
   <% if current_user.following?(user) %>
-    <%= link_to "フォローを外す", public_user_relationships_path(user.id), method: :delete, class: "btn btn-primary btn-sm",remote: true %>
+    <%= link_to public_user_relationships_path(user.id), method: :delete, class: "btn btn-primary btn-sm",remote: true do %>
+      フォローを外す <i class="fas fa-user-times"></i>
+    <% end %>
   <% else %>
-    <%= link_to "フォローする", public_user_relationships_path(user.id), method: :post, class: "btn btn-success btn-sm",remote: true %>
+    <%= link_to public_user_relationships_path(user.id), method: :post, class: "btn btn-success btn-sm",remote: true do %>
+      フォローする <i class="fas fa-user-plus"></i>
+    <% end %>
   <% end %>
 </div>
