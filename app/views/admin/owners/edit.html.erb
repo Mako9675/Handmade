@@ -1,2 +1,31 @@
-<h1>Admin::Owners#edit</h1>
-<p>Find me in app/views/admin/owners/edit.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>プロフィール編集</h2>
+      <%= form_with model: [:admin,@owner],url: admin_owners_path, local:true do |f| %>
+        <% if @owner.errors.any? %>
+          <%= @owner.errors.count %>件のエラーが発生しました
+        <% end %>
+        
+      <div class="form-group">
+        <%= f.label :name,'名前' %>
+        <%= f.text_field :name, class: 'form-control',placeholder: "名前" %>
+        <% if @owner.errors.include?(:name) %>
+          <p style="color: red;"><%= @owner.errors.full_messages_for(:name).first %>
+        <% end %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :email,'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: "sample@example.com" %>
+        <% if @owner.errors.include?(:email) %>
+          <p style="color: red;"><%= @owner.errors.full_messages_for(:email).first %>
+        <% end %>
+      </div>
+      
+      <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

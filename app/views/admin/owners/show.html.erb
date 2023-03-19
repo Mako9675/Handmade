@@ -1,2 +1,19 @@
-<h1>Admin::Owners#show</h1>
-<p>Find me in app/views/admin/owners/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    
+    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
+      <h1>管理人のページ</h1>
+      <table class='table'>
+        <tr>
+	      <th>名前</th>
+	      <td><%= @owner.name %></td>
+        </tr>
+        <tr>
+	      <th>メールアドレス</th>
+	      <td><%= @owner.email %></td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_admin_owners_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

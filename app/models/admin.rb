@@ -4,5 +4,13 @@ class Admin < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
          
-  has_one_attached :admin_image
+  has_one_attached :owner_image
+  
+  def get_owner_image(width, height)
+    unless owner_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      owner_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpg')
+    end
+    owner_image.variant(resize_to_limit: [width, height]).processed
+  end
 end
