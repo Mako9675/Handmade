@@ -1,43 +1,48 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>ログイン</h2>
+    <div class="mx-auto col-7 mt-4">
+      <div class="text-center">
+        <h2>ログイン</h2>
+      </div>
 
-      <%= form_with model: [:public,@admin], url: admin_session_path, id: 'admin', class: 'admin', local: true do |f| %>
+      <%= form_with model: [:public,@admin], url: admin_session_path, id: 'admin', class: 'admin form-inline', local: true do |f| %>
         <% if @admin.errors.any? %>
           <%= @admin.errors.count %>件のエラーが発生しました
         <% end %>
         <%= flash[:error] %>
       
-      <div class="field">
-        <%= f.label :name,'名前' %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+      <div class="form-group col-12 my-4">
+        <%= f.label :name,'名前' %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control col-sm-3 col-md-7' %>
         <% if @admin.errors.include?(:name) %>
           <p style="color: red;"><%= @admin.errors.full_messages_for(:name).first %>
         <% end %>
       </div>
       
-      <div class="field">
-        <%= f.label :email,'メールアドレス' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      <div class="form-group col-12 md-4">
+        <%= f.label :email,'メールアドレス' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-sm-3 col-md-7' %>
         <% if @admin.errors.include?(:name) %>
           <p style="color: red;"><%= @admin.errors.full_messages_for(:email).first %>
         <% end %>
       </div>
       
-      <div class="field">
+      <div class="form-group col-12 my-4">
         <%= f.label :password,'パスワード' %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-sm-3 col-md-7' %>
         <% if @admin.errors.include?(:password) %>
           <p style="color: red;"><%= @admin.errors.full_messages_for(:password).first %>
         <% end %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "ログイン", class: 'btn btn-primary' %>
+      <div class="formn-group col-12">
+        <%= f.submit "ログイン", class: 'btn btn-primary btn-block col-6 mx-auto' %>
       </div>
       
       <% end %>
+      <div class="text-center">
+        <p style="color: red;">※管理者のみログイン可能</p>
+      </div>
     </div>
   </div>
 </div>
