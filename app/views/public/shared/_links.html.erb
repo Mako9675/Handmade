@@ -1,10 +1,15 @@
 <%- if controller_name != 'sessions' %>
-  <h5>すでに会員の方は
-  <%= link_to "こちら", new_user_session_path %> 
-  からログインしてください。</h5>
+  <div class="mt-4 text-center">
+    <h5>すでに会員の方は
+    <%= link_to "こちら", new_user_session_path %>
+    からログインしてください。</h5>
+  </div>
 <% end %>
+
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <h5>初めての方は
-  <%= link_to "こちら", new_user_registration_path %> 
-  から新規登録してください。</h5>
+  <div class="mt-4 text-center">
+    <h5>初めての方は
+    <%= link_to "こちら", new_user_registration_path %> 
+    から新規登録してください。</h5>
+  </div>
 <% end %>
