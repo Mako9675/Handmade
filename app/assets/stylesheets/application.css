@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ 
+ /* header */
 header {
   height: 40px;
 }
@@ -27,8 +29,28 @@ main {
   padding-bottom: 50px;
 }
 
+/* ログイン/新規登録フォーム */
 label {
     width: 150px;
+  }
+  
+/* top */
+.example {
+  position: relative;
+  }
+
+.example h1 {
+  position: absolute;
+  color: #4b0082;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  text-align: center;
   }
   
 .field_with_errors {
