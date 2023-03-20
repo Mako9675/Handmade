@@ -1,91 +1,88 @@
-<header class = "fixed-top" style="">
-  <nav class="navbar navbar-expand-lg", style="background-color:#e0ffff;">
-    <div class="container">
-      <% if user_signed_in? %>
-        <a class="navbar-brand text-dark" href="/">
-          <span>
-            <%= image_tag 'ロゴ.png', width: '150px', height: '40px' %>
-          </span></a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-bar" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <% elsif admin_signed_in? %>
-        <a class="navbar-brand text-dark" href="/admin/top">
-          <span>
-            <%= image_tag 'ロゴ.png', width: '150px', height: '40px' %>
-          </span></a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-bar" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <% else %>
-        <a class="navbar-brand text-dark" href="/">
-          <span>
-            <%= image_tag 'ロゴ.png', width: '150px', height: '40px' %>
-          </span></a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-bar" aria-controls="nav-bar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      <% end %>
-      
-      <div class="collapse justify-content-end navbar-collapse " id="nav-bar">
-        <ul class="navbar-nav my-2 my-md-0 mr-md-3">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to posts_path,class: 'nav-link text-dark' do %>
-                <i class="fas fa-tags"></i> 投稿一覧
-              <% end %>
-            </li>
-            <li>
-              <%= link_to public_user_path(current_user),class: 'nav-link text-dark' do %>
-                <i class="far fa-user-circle"></i> マイページ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_post_path,class: 'nav-link text-dark' do %>
-                <i class="fas fa-pencil-alt"></i> 投稿する
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-              <% end %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to admin_owners_path,class: 'nav-link text-dark' do %>
-                <i class="far fa-user-circle"></i> マイページ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-              <% end %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to about_path,class: 'nav-link text-dark' do %>
-                <i class="fas fa-question"></i> About
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
-                <i class="fas fa-user-edit"></i> 新規登録
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
-                <i class="fas fa-sign-in-alt"></i> ログイン
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_admin_session_path ,class: 'nav-link text-dark' do %>
-                <i class="fas fa-wrench"></i> 管理者ログイン
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+<header class = "header fixed-top" style="">
+  <nav class="navbar navbar-expand-md bg-body-tertiary navbar-light", style="background-color:#e0ffff;">
+    <% if user_signed_in? %>
+      <a class="navbar-brand" href="/">
+        <span>
+          <%= image_tag 'ロゴ.png', width: '170px', height: '50px' %>
+        </span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% elsif admin_signed_in? %>
+      <a class="navbar-brand" href="/admin/top">
+        <span>
+          <%= image_tag 'ロゴ.png', width: '170px', height: '50px' %>
+        </span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% else %>
+      <a class="navbar-brand" href="/">
+        <span>
+          <%= image_tag 'ロゴ.png', width: '170px', height: '50px' %>
+        </span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% end %>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav mt-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to posts_path,class: 'nav-link text-dark' do %>
+              <i class="fas fa-tags"></i> 投稿一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to public_user_path(current_user),class: 'nav-link text-dark' do %>
+              <i class="far fa-user-circle"></i> マイページ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_post_path,class: 'nav-link text-dark' do %>
+              <i class="fas fa-pencil-alt"></i> 投稿する
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to admin_owners_path,class: 'nav-link text-dark' do %>
+              <i class="far fa-user-circle"></i> マイページ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to about_path,class: 'nav-link text-dark' do %>
+              <i class="fas fa-question"></i> About
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+              <i class="fas fa-user-edit"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path ,class: 'nav-link text-dark' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_admin_session_path ,class: 'nav-link text-dark' do %>
+              <i class="fas fa-wrench"></i> 管理者ログイン
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
-
 </header>
