@@ -1,49 +1,58 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-7">
-      <h2>新規会員登録</h2>
+    <div class="mx-auto col-7 mt-4">
+      <div class="text-center">
+        <h2>新規会員登録</h2>
+      </div>
 
-      <%= form_with model: [:public,@user], url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= form_with model: [:public,@user], url: user_registration_path, id: 'new_user', class: 'new_user form-inline', local: true do |f| %>
         <% if @user.errors.any? %>
           <%= @user.errors.count %>件のエラーが発生しました
         <% end %>
+        <%= flash[:error] %>
 
-      <div class="form-group">
+      <div class="form-group col-12 my-4">
         <%= f.label :name,'名前' %>
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.text_field :name, class: 'form-control col-9' %>
         <% if @user.errors.include?(:name) %>
           <p style="color: red;"><%= @user.errors.full_messages_for(:name).first %>
         <% end %>
       </div>
   
-       <div class="form-group">
+       <div class="form-group col-12 mb-4">
         <%= f.label :email,'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control', placeholder: "sample@example.com" %>
+        <%= f.email_field :email, class: 'form-control col-9', placeholder: "sample@example.com" %>
         <% if @user.errors.include?(:email) %>
           <p style="color: red;"><%= @user.errors.full_messages_for(:email).first %>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password,'パスワード(6文字以上)' %>
-        <%= f.password_field :password, class: 'form-control' %>
+      <div class="form-group col-12 mb-4">
+        <%= f.label :password do %>
+          パスワード<br>(6文字以上)
+        <% end %>
+        <%= f.password_field :password, class: 'form-control col-9' %>
         <% if @user.errors.include?(:password) %>
           <p style="color: red;"><%= @user.errors.full_messages_for(:password).first %>
         <% end %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password_confirmation,'パスワード(確認用)' %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <div class="form-group col-12 mb-4">
+        <%= f.label :password_confirmation do %>
+          パスワード<br>(確認用)
+        <% end %>
+        <%= f.password_field :password_confirmation, class: 'form-control col-9' %>
         <% if @user.errors.include?(:password_confirmation) %>
           <p style="color: red;"><%= @user.errors.full_messages_for(:password_confirmation).first %>
         <% end %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "新規登録", class: 'm-3 btn btn-success d-grid gap-2 col-3' %>
+      <div class="formn-group col-12">
+        <%= f.submit "新規登録", class: 'btn btn-success btn-block col-6 mx-auto' %>
       </div>
+      
       <% end %>
+      
       <%= render "public/shared/links" %>
     </div>
   </div>
