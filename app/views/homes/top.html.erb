@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class="example col-12">
+    <div class="top col-12">
       <%= image_tag 'メイン画像.jpg', width: '100%' %>
       <h1>
         Handmade.comへ<br>
@@ -10,7 +10,7 @@
     
     <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <div>
-        <h5>いいね <i class="fas fa-thumbs-up"></i> TOP5!!</h5>
+        <h5>いいね数 <i class="fas fa-thumbs-up"></i> TOP5!!</h5>
         <table class='table table-inverse'>
           <tbody>
             <% @post_like_ranks.each.with_index(1) do |post, i| %>
@@ -40,12 +40,12 @@
                 </td>
               </tr>
           </tbody>
-          <% end %>
+            <% end %>
         </table>
       </div>
       
       <div class="mt-5">
-        <h5>コメント <i class="fas fa-comments"></i> TOP5!!</h5>
+        <h5>コメント数 <i class="fas fa-comments"></i> TOP5!!</h5>
         <table class='table table-inverse'>
           <tbody>
             <% @post_comment_ranks.each.with_index(1) do |post, i| %>
@@ -72,7 +72,7 @@
                 <td><i class="fas fa-comment"></i>コメント数: <%= post.comments.count %></td>
               </tr>
           </tbody>
-          <% end %>
+            <% end %>
         </table>
       </div>
     </div>

@@ -1,8 +1,8 @@
 class HomesController < ApplicationController
   def top
     @genres = Genre.all
-    @post_like_ranks = Post.where(id: Favorite.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
-    @post_comment_ranks = Post.where(id: Comment.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
+    @post_like_ranks = Post.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+    @post_comment_ranks = Post.includes(:comments).sort {|a,b| b.comments.size <=> a.comments.size}
   end
 
   def about

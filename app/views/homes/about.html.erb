@@ -1,9 +1,41 @@
 <div class='container'>
   <div class='row'>
+    <div class="about col-12">
+      <%= image_tag 'アバウト画像.jpg', width: '100%' %>
+      <h1>
+        Handmade.comとは？
+      </h1>
+    </div>
     
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
-      <h1>Handmade.com　概要</h1>
-      <p>ハンドメイド好きな人が自由に投稿するサイト</p>
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
+      <h2>＼ハンドメイド好きな人が自由に投稿するサイトです／</h2>
+      <table>
+        <tr>
+          <th>右のサイドバーから単語からorジャンルごとで検索可能！！</th>
+          <th class="ex1">
+            <%= image_tag 'サイドバー.png' %>
+          </th>
+        </tr>
+        
+        <tr>
+          <th class="ex2">
+            <%= image_tag 'no_image.jpg' %>
+          </th>
+          <th>ログインしなくても投稿の閲覧可能！！</th>
+        </tr>
+        <tr>
+          <th>ぜひ登録して自分の投稿をみんなに発信しよう！！</th>
+          <th class="ex3">
+            <%= image_tag '投稿画面.png' %>
+          </th>
+        </tr>
+        <tr>
+          <th>いいねやコメントが多ければトップページのランキングに乗るかも？？</th>
+          <td class="ex4">
+            <%#= image_tag 'サイドバー.png', width: '100%' %>
+          </td>
+        </tr>
+      </table>
     </div>
     
     <%= render 'layouts/sidebar', genres: @genres %>
