@@ -1,8 +1,8 @@
-<div class="mt-5 mx-auto col-sm-12 col-md-4 col-lg-3">
-  <div class="search_form">
-      <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
-        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-        <%= f.submit "検索", class: "btn btn-sm btn-success" %>
+<div class="m-5 mx-auto col-sm-12 col-md-4 col-lg-3">
+  <div class="col-12">
+      <%= form_with(url: search_path, local: true, method: :get, class: "form-inline mb-3") do |f| %>
+        <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "form-control col-sm-9 col-md-8" %>
+        <%= f.submit "検索", class: "btn btn-sm btn-success ml-2" %>
       <% end %>
     </div>
   <table class="table table-bordered table-hover">
