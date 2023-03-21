@@ -5,6 +5,11 @@
       <h1>投稿フォーム</h1>
       <%= form_with model: @post, local: true do |f| %>
       
+      <div class="form-group">
+        <%= f.label :post_image, 'サムネ画像' %>
+        <%= f.file_field :post_image, class: "form-control-file post_image", accept: 'image/*' %>
+      </div>
+      
       <div class="field">
         <%= f.label :title,'タイトル' %><br />
         <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control' %>
