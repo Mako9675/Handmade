@@ -23,7 +23,17 @@
         <tbody>
           <% @post_like_ranks.each.with_index(1) do |post, i| %>
             <tr>
-              <td>第<%= i %>位</td>
+              <td class="text-center">
+                <% case i when 1 %>
+                  <i class="fas fa-crown" style='color: #ffd700;'></i> 第<%= i %>位
+                <% when 2 %>
+                  <i class="fas fa-crown" style='color: #c0c0c0;'></i> 第<%= i %>位
+                <% when 3 %>
+                <i class="fas fa-crown" style='color: #a0522d;'></i> 第<%= i %>位
+                <% else %>
+                <i class="fas fa-crown"></i> 第<%= i %>位
+                <% end %>
+              </td>
               <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
               <td><%= post.genre.name %></td>
               <td><i class="fas fa-comment"></i>コメント数: <%= post.comments.count %></td>
