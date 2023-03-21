@@ -3,10 +3,7 @@
     <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
       <div class="form-group">
         <%= f.label :process_image, '作り方画像' %>
-        <%= f.file_field :process_image, class: "form-control-file post_image", accept: 'image/*' %>
-        <% if body.errors.include?(:process_image) %>
-          <p style="color: red;"><%= body.errors.full_messages_for(:process_image).first %>
-        <% end %>
+        <%= f.file_field :process_image, class: "form-control-file make_image", accept: 'image/*' %>
       </div>
       
       <%= f.text_area :explanation, placeholder: "作り方", class: 'form-control' %>

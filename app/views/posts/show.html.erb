@@ -2,35 +2,40 @@
   <div class='row'>
     
     <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
-      <h1>投稿詳細</h1>
-  		  
-        <h5><%= @post.title %>
-          <% if admin_signed_in? %>
-            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
-              削除する <i class="fas fa-trash-alt"></i>
-            <% end %>
+      <h1>投稿詳細
+        <% if admin_signed_in? %>
+          <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
+            削除する <i class="fas fa-trash-alt"></i>
           <% end %>
-        </h5>
+        <% end %>
+  		</h1>
+  		
+  		<table>
+  		  <tr>
+  		    <th> <%= image_tag @post.get_post_image(200,200) %></th>
+          <td><h5><%= @post.title %></td></h5>
+        </tr>
+      </table>
         
-        <h6>材料</h6>
-        <table class='table table-inverse'>
-          <% @materials.each do |m| %>
-            <tr>
-              <td><%= m.ing_name %></td>
-              <td><%= m.quantity %></td>
-            </tr>
-          <% end %>
-        </table>
+      <h6>材料</h6>
+      <table class='table table-inverse'>
+        <% @materials.each do |m| %>
+          <tr>
+            <td><%= m.ing_name %></td>
+            <td><%= m.quantity %></td>
+          </tr>
+        <% end %>
+      </table>
         
-        <h6>作り方</h6>
-        <table class='table table-inverse'>
-          <% @makes.each do |make| %>
-            <tr>
-              <td><%= image_tag make.get_post_image(100,100) %></td>
-              <td><%= make.explanation %></td>
-            </tr>
-          <% end %>
-        </table>
+      <h6>作り方</h6>
+      <table class='table table-inverse'>
+        <% @makes.each do |make| %>
+          <tr>
+            <td><%= image_tag make.get_make_image(100,100) %></td>
+            <td><%= make.explanation %></td>
+          </tr>
+        <% end %>
+      </table>
         
         <p>ジャンル：<%= link_to @genre.name, genres_path(id: @genre.id) %></p>
         
