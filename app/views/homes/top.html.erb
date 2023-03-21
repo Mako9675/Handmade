@@ -10,8 +10,8 @@
     
     <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <div>
-        <h5>投稿いいね <i class="fas fa-thumbs-up"></i> TOP5!!</h5>
-        <table class='table table-hover table-inverse'>
+        <h5>いいね <i class="fas fa-thumbs-up"></i> TOP5!!</h5>
+        <table class='table table-inverse'>
           <tbody>
             <% @post_like_ranks.each.with_index(1) do |post, i| %>
               <tr>
@@ -46,7 +46,7 @@
       
       <div class="mt-5">
         <h5>コメント <i class="fas fa-comments"></i> TOP5!!</h5>
-        <table class='table table-hover table-inverse'>
+        <table class='table table-inverse'>
           <tbody>
             <% @post_comment_ranks.each.with_index(1) do |post, i| %>
               <tr>
