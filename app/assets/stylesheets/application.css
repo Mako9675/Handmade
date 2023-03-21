@@ -19,14 +19,19 @@ header {
   height: 40px;
 }
 
+.navbar-toggler {
+  margin-left: auto;
+}
+
 body {
  position: relative;
  padding-top: 70px; 
 }
 
 main {
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 40px);
   padding-bottom: 50px;
+  background-color: #f9ffff;
 }
 
 /* ログイン/新規登録フォーム */
@@ -37,6 +42,7 @@ label {
 /* top */
 .example {
   position: relative;
+  height: 50%;
   }
 
 .example h1 {
