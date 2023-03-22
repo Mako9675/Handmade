@@ -1,33 +1,41 @@
 <div class='container'>
   <div class='row'>
     
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <h1>会員ページ</h1>
-      <table class='table'>
-        <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
-        <tr>
-	      <th>名前</th>
-	      <td><%= @user.name %></td>
-        </tr>
-        <tr>
-	      <th>自己紹介</th>
-	      <td><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <th>フォロー</th>
-          <td>
-            <%= link_to public_user_followings_path(@user) do %> 
-              <%= @follow.count %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>フォロワー</th>
-          <td id="follower_count_<%= @user.id %>">
-            <%= render "public/relationships/follower", user: @user, follower: @follower %>
-          </td>
-        </tr>
-      </table>
+      <div class="text-center mb-3">
+        <p class="img-object-fit-radius">
+          <%= image_tag @user.get_profile_image(150,150) %>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-9 mx-auto">
+          <table class='table'>
+            <tr>
+	            <th>名前</th>
+	            <td><%= @user.name %></td>
+            </tr>
+            <tr>
+	            <th>自己紹介</th>
+	            <td><%= @user.introduction %></td>
+            </tr>
+            <tr>
+              <th>フォロー</th>
+              <td>
+                <%= link_to public_user_followings_path(@user) do %> 
+                  <%= @follow.count %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>フォロワー</th>
+              <td id="follower_count_<%= @user.id %>">
+                <%= render "public/relationships/follower", user: @user, follower: @follower %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
       
       <% if user_signed_in? && current_user.id != @user.id %>
         <div id="follow_btn_<%= @user.id %>">
@@ -37,40 +45,41 @@
       
       <% if current_user == @user %>
         <div class='row'>
-          <%= link_to edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" do %>
-            編集する <i class="fas fa-user-cog"></i>
-          <% end %>
-        </div>
-        <div class='row'>
-          <%= link_to confirm_posts_path, class: 'btn btn-info' do %>
-            下書き一覧 <i class="far fa-file"></i>
-          <% end %>
+          <div class="col text-right">
+            <%= link_to edit_public_user_path(@user), class: "btn btn-secondary edit__public_user_#{@user.id}" do %>
+              編集する <i class="fas fa-user-cog"></i>
+            <% end %>
+            <%= link_to confirm_posts_path, class: 'btn btn-info' do %>
+              下書き一覧 <i class="far fa-file"></i>
+            <% end %>
+          </div>
         </div>
       <% end %>
       
-      <h4><%= @user.name %>の投稿</h4>
-      <table class='table table-hover table-inverse'>
-        <thead>
-          <tr>
-            <th>タイトル</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
-            <td><%= post.genre.name %></td>
-            <td>コメント数: <%= post.comments.count %></td>
-            <td>
-              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-              <%= post.favorites.count %> いいね
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-      
+      <div class="my-5">
+        <h4><i class="fas fa-clipboard"></i> <%= @user.name %>の投稿</h4>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
+              <td><%= post.genre.name %></td>
+              <td>コメント数: <%= post.comments.count %></td>
+              <td>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= post.favorites.count %> いいね
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
       
     <%= render 'layouts/sidebar', genres: @genres %>

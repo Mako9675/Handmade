@@ -39,6 +39,11 @@ label {
     width: 150px;
   }
   
+  .field_with_errors {
+  display: contents;
+  text-align: center;
+}
+  
 /* top */
 .top {
   position: relative;
@@ -82,12 +87,6 @@ label {
   .ex4 {
     width: 50%;
   }
-  
-  /* 退会画面 */
-.fa-exclamation-triangle {
-  stroke: #000000;
-  stroke-width: 20px;
-}
 
 .about h1 {
   position: absolute;
@@ -104,10 +103,23 @@ label {
   text-align: center;
   font-family: 'Yusei Magic', sans-serif;
   }
-  
-.field_with_errors {
-  display: contents;
-  text-align: center;
+
+  /* 退会画面 */
+.fa-exclamation-triangle {
+  stroke: #000000;
+  stroke-width: 20px;
+}
+
+/* 会員ページ */
+.img-object-fit-radius{
+  padding:0 !important;
+}
+.img-object-fit-radius img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius:100%;
+  box-shadow: 1px 2px 6px #808080;
 }
 
 footer {

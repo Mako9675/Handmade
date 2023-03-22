@@ -62,6 +62,7 @@ gem 'kaminari','~> 1.2.1' #ページネーション
 gem 'devise-i18n' #日本語化
 gem 'enum_help' #enumの日本語化
 gem 'cocoon' #フォームの増減
+gem "active_storage_validations" #ActiveStorageバリデーション用
 
 gem 'dotenv-rails'
 group :production do
