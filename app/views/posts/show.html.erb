@@ -54,7 +54,7 @@
       <div class="row">
         <div class="col">
           <p>
-            作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %>
+            作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %>  <%= @post.created_at.strftime('%Y/%m/%d') %>
           </p>
         </div>
         
