@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Admin)
       admin_top_path
     else
-      posts_path
+      public_user_path(current_user)
     end
   end
 
