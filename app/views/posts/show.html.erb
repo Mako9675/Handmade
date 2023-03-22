@@ -1,59 +1,76 @@
 <div class='container'>
   <div class='row'>
     
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
-      <h1>投稿詳細
-        <% if admin_signed_in? %>
-          <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
-            削除する <i class="fas fa-trash-alt"></i>
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
+      <div class="mb-5">
+        <h1>投稿詳細
+          <% if admin_signed_in? %>
+            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
+              削除する <i class="fas fa-trash-alt"></i>
+            <% end %>
           <% end %>
-        <% end %>
-  		</h1>
+          <% if @post.user == current_user %>
+            <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" do %>
+              編集する <i class="far fa-edit"></i>
+            <% end %>
+          <% end %>
+  	  	</h1>
+  	  </div>
   		
-  		<table>
-  		  <tr>
-  		    <th> <%= image_tag @post.get_post_image(200,200) %></th>
-          <td><h5><%= @post.title %></td></h5>
-        </tr>
-      </table>
-        
-      <h6>材料</h6>
-      <table class='table table-inverse'>
-        <% @materials.each do |m| %>
-          <tr>
-            <td><%= m.ing_name %></td>
-            <td><%= m.quantity %></td>
-          </tr>
-        <% end %>
-      </table>
-        
-      <h6>作り方</h6>
-      <table class='table table-inverse'>
-        <% @makes.each do |make| %>
-          <tr>
-            <td><%= image_tag make.get_make_image(100,100) %></td>
-            <td><%= make.explanation %></td>
-          </tr>
-        <% end %>
-      </table>
-        
-        <p>ジャンル：<%= link_to @genre.name, genres_path(id: @genre.id) %></p>
-        
-        <% if @post.user == current_user %>
-          <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" do %>
-            編集する <i class="far fa-edit"></i>
-          <% end %>
-        <% end %>
-      
-      <p>作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %></p>
-      
-      <p id="favorite_buttons_<%= @post.id %>">
-        <%= render "favorites/favorite", post: @post %>
-      </p>
-      
-      <div id="comments_area"> 
-        <%= render 'comments/comment', post: @post %>
+
+  		<div class="row">
+  		  <div class="col">
+  		    <%= image_tag @post.get_post_image(200,200) %>
+  		  </div>
+  		  <div class="col">
+          <h3><%= @post.title %></h3>
+        </div>
       </div>
+        
+      <div class="my-5">
+        <h5>材料</h5>
+        <table class='table table-inverse'>
+          <% @materials.each do |m| %>
+            <tr>
+              <td><%= m.ing_name %></td>
+              <td><%= m.quantity %></td>
+            </tr>
+          <% end %>
+        </table>
+        
+        <h5>作り方</h5>
+        <table class='table table-inverse'>
+          <% @makes.each do |make| %>
+            <tr>
+              <td><%= image_tag make.get_make_image(100,100) %></td>
+              <td><%= make.explanation %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      
+      <p>ジャンル：<%= link_to @genre.name, genres_path(id: @genre.id) %></p>
+      
+      <div class="row">
+        <div class="col">
+          <p>
+            作成したユーザー：<%= link_to @post.user.name,public_user_path(@post.user.id) %>
+          </p>
+        </div>
+        
+        <div class="col">
+          <p id="favorite_buttons_<%= @post.id %>">
+            <%= render "favorites/favorite", post: @post %>
+          </p>
+        </div>
+      </div>
+      
+      <div class="my-3">
+        <div id="comments_area"> 
+          <%= render 'comments/comment', post: @post %>
+        </div>
+      </div>
+      
       <div class="new-comment">
         <%= render 'comments/form', post: @post, comment: @comment %>
       </div>
