@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.page(params[:page]).reverse_order
+    @posts = Post.published.page(params[:page]).per(10).reverse_order
     @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @genres = Genre.all
   end

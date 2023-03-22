@@ -1,19 +1,27 @@
 <div class='container'>
   <div class='row'>
     
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <h1>投稿一覧</h1>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
+            <th colspan="1"></th>
             <th>タイトル</th>
-            <th colspan="3"></th>
+            <th>ジャンル</th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
+            <td><%= image_tag post.get_post_image(100,100) %></td>
+            <td>
+              <%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %>
+              <br>
+              <br>作成:<%= link_to post.user.name,public_user_path(post.user.id) %>
+              <br><%= post.created_at.strftime('%Y/%m/%d') %>
+            </td>
             <td><%= post.genre.name %></td>
             <td><i class="fas fa-comment"></i>コメント数: <%= post.comments.count %></td>
             <td>
@@ -24,6 +32,8 @@
         <% end %>
         </tbody>
       </table>
+      
+      <%= paginate @posts, thema: 'twitter-bootstrap-4' %>
     </div>
     
     <%= render 'layouts/sidebar', genres: @genres %>
