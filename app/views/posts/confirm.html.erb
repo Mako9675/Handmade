@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
-      <h1>下書き一覧</h1>
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
+      <h1>下書き一覧 <i class="far fa-file"></i></h1>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -12,11 +12,10 @@
         <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
-            <td>コメント数: <%= post.comments.count %></td>
-            <td id="favorite_buttons_<%= post.id %>">
-            <%= render "favorites/favorite", post: post %>
-            </td>
+            <td><%= image_tag post.get_post_image(100,100) %></td>
+            <td><%= post.title %></td>
+            <td><%= post.genre.name %></td>
+            <td><%= link_to "編集する", post_path(post.id), class: "post_#{post.id} btn btn-success btn-sm" %></td>
           </tr>
         <% end %>
         </tbody>

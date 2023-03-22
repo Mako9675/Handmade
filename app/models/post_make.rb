@@ -1,7 +1,7 @@
 class PostMake < ApplicationRecord
   belongs_to :post
   
-  has_many_attached :make_image
+  has_one_attached :make_image
   
   def get_make_image(width, height)
     unless make_image.attached?

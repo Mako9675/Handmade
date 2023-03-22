@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:notice] = "投稿を削除しました"
-      redirect_to posts_path
+      redirect_to public_user_path(current_user)
     else
       flash[:notice] = "削除に失敗しました"
       render 'show'
