@@ -13,9 +13,8 @@
         <% @posts.each do |post| %>
           <tr>
             <td><%= image_tag post.get_post_image(100,100) %></td>
-            <td><%= post.title %></td>
+            <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
             <td><%= post.genre.name %></td>
-            <td><%= link_to "編集する", post_path(post.id), class: "post_#{post.id} btn btn-success btn-sm" %></td>
           </tr>
         <% end %>
         </tbody>
