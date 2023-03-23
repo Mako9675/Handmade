@@ -1,6 +1,8 @@
 class Admin::OwnersController < ApplicationController
+  before_action :authenticate_admin!
   
   def show
+    @genres = Genre.all
     @owner = Admin.find(1)
   end
 

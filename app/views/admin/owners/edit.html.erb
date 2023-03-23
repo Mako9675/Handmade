@@ -1,29 +1,37 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>プロフィール編集</h2>
-      <%= form_with model: [:admin,@owner],url: admin_owners_path, local:true do |f| %>
+    <div class="mx-auto col-8 mt-4">
+      <div class="text-center">
+        <h2>プロフィール編集</h2>
+      </div>
+        
+      <%= form_with model: [:admin,@owner],url: admin_owners_path, class: "form-inline", local:true do |f| %>
         <% if @owner.errors.any? %>
           <%= @owner.errors.count %>件のエラーが発生しました
         <% end %>
         
-      <div class="form-group">
+      <div class="form-group col-12 my-4">
         <%= f.label :name,'名前' %>
-        <%= f.text_field :name, class: 'form-control',placeholder: "名前" %>
+        <%= f.text_field :name, class: 'form-control col-sm-6 col-md-7',placeholder: "名前" %>
         <% if @owner.errors.include?(:name) %>
           <p style="color: red;"><%= @owner.errors.full_messages_for(:name).first %>
         <% end %>
       </div>
       
-      <div class="form-group">
+      <div class="form-group col-12 my-4">
         <%= f.label :email,'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control', placeholder: "sample@example.com" %>
+        <%= f.email_field :email, class: 'form-control col-sm-6 col-md-7', placeholder: "sample@example.com" %>
         <% if @owner.errors.include?(:email) %>
           <p style="color: red;"><%= @owner.errors.full_messages_for(:email).first %>
         <% end %>
       </div>
       
-      <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+      <div class="form-group col-12 mb-4 text-center">
+        <div class="col">
+          <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        </div>
+      </div>
+        
       <% end %>
       
     </div>

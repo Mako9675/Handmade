@@ -1,8 +1,15 @@
 <div class='container'>
   <div class='row'>
     
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <h1>管理人のページ</h1>
+      
+      <div class="text-center mb-3">
+        <p class="img-object-fit-radius">
+          <%= image_tag @owner.get_owner_image(150,150) %>
+        </p>
+      </div>
+      
       <table class='table'>
         <tr>
 	      <th>名前</th>
@@ -13,7 +20,17 @@
 	      <td><%= @owner.email %></td>
         </tr>
       </table>
-      <%= link_to '編集する', edit_admin_owners_path, class: "btn btn-secondary" %>
+      
+      <div class='row'>
+        <div class="col text-right">
+          <%= link_to edit_admin_owners_path, class: "btn btn-secondary" do %>
+            編集する <i class="fas fa-user-cog"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
+    
+    <%= render 'layouts/sidebar', genres: @genres %>
+    
   </div>
 </div>
