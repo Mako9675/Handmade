@@ -139,8 +139,17 @@ label {
   border-radius: 15px;    /*角を丸くする*/
 }
 
-/* 管理者トップ */
-
+/* 管理者ユーザー一覧 */
+.img-admin-fit-radius{
+  padding:0 !important;
+}
+.img-admin-fit-radius img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius:100%;
+  box-shadow: 1px 2px 6px #808080;
+}
 
 /* footer */
 footer {

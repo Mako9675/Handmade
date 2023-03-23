@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :is_matching_login_admin, only: [:update, :edit, ]
   
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
     @genres = Genre.all
   end
 
