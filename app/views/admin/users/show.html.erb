@@ -70,10 +70,14 @@
         <h5>登録日: <%= @user.created_at.strftime('%Y/%m/%d') %>
           <% if @user.is_deleted %>
             退会済み
-            <%= link_to "有効にする", admin_withdrawal_path(@user.id), method: :patch, data: { confirm: 'ステータスを有効にしますか？' }, class: "btn btn-sm btn-success ml-5" %>
+            <%= link_to admin_withdrawal_path(@user.id), method: :patch, data: { confirm: 'ステータスを有効にしますか？' }, class: "btn btn-sm btn-success ml-5" do %>
+              有効にする <i class="fas fa-user-check"></i>
+            <% end %>
           <% else %>
             有効
-            <%= link_to "退会させる", admin_withdrawal_path(@user.id), method: :patch, data: { confirm: '本当に退会させますか？' }, class: "btn btn-sm btn-danger ml-5" %>
+            <%= link_to admin_withdrawal_path(@user.id), method: :patch, data: { confirm: '本当に退会させますか？' }, class: "btn btn-sm btn-danger ml-5" do %>
+              退会させる <i class="fas fa-user-slash"></i>
+            <% end %>
           <% end %>
         </h5>
       </div>
