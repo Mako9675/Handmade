@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @genres = Genre.all
-    @posts = @user.posts
+    @posts = @user.posts.published
     @follow = @user.followings
     @follower = @user.followers
   end
