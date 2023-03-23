@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page]).per(10)
     @genre = Genre.find(params[:id])
   end
   

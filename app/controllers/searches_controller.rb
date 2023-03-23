@@ -3,6 +3,6 @@ class SearchesController < ApplicationController
     
     @genres = Genre.all
     
-    @posts = Post.search(params[:keyword])
+    @posts = Post.page(params[:page]).per(10).search(params[:keyword])
   end
 end

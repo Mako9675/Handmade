@@ -26,11 +26,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-      
-      post:
-        ing_name: 材料
-        quantity: 分量
-        
     models:
       user: ユーザー
   devise:
@@ -181,5 +176,3 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
-      
-    
