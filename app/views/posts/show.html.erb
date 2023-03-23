@@ -5,7 +5,7 @@
       <div class="mb-5">
         <h1>投稿詳細
           <% if admin_signed_in? %>
-            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
+            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id} ml-5" do %>
               削除する <i class="fas fa-trash-alt"></i>
             <% end %>
           <% end %>
