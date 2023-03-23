@@ -6,6 +6,11 @@ class Admin < ApplicationRecord
          
   has_one_attached :owner_image
   
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  
   def get_owner_image(width, height)
     unless owner_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

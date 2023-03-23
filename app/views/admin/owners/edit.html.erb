@@ -26,6 +26,11 @@
         <% end %>
       </div>
       
+      <div class="form-group col-12 mb-4">
+        <%= f.label :owner_image, 'プロフィール画像', class: "form-file-label" %>
+        <%= f.file_field :owner_image, class: "form-file-button owner_image", accept: 'image/*' %>
+      </div>
+      
       <div class="form-group col-12 mb-4 text-center">
         <div class="col">
           <%= f.submit "編集内容を保存", class: 'btn btn-success' %>

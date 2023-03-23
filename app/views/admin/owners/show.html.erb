@@ -2,7 +2,9 @@
   <div class='row'>
     
     <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
-      <h1>管理人のページ</h1>
+      <div class="text-center">
+        <h1>管理人のページ</h1>
+      </div>
       
       <div class="text-center mb-3">
         <p class="img-object-fit-radius">
@@ -10,16 +12,20 @@
         </p>
       </div>
       
-      <table class='table'>
-        <tr>
-	      <th>名前</th>
-	      <td><%= @owner.name %></td>
-        </tr>
-        <tr>
-	      <th>メールアドレス</th>
-	      <td><%= @owner.email %></td>
-        </tr>
-      </table>
+      <div class="row">
+        <div class="col-9 mx-auto">
+          <table class='table'>
+            <tr>
+	            <th>名前</th>
+	            <td><%= @owner.name %></td>
+            </tr>
+            <tr>
+	            <th>メールアドレス</th>
+	            <td><%= @owner.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
       
       <div class='row'>
         <div class="col text-right">
