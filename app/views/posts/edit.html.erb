@@ -32,7 +32,7 @@
             </div>
               <!-- １）追加ボタンの記述 -->
               <div class="add-botton-box text-center mt-2">
-                <%= link_to_add_association "+フォームを追加する", f, :post_materials, partial: "post_materials_fields", render_options: {locals: { material: @material }} %>
+                <%= link_to_add_association "+フォームを追加する", f, :post_materials, partial: "post_materials_fields", render_options: {locals: { material: PostMaterial.new }} %>
               </div>
           </div>
         
@@ -49,7 +49,7 @@
               <% end %>
               <!-- １）追加ボタンの記述 -->
               <div class="add-botton-box text-center mt-2 mb-3">
-                <%= link_to_add_association "+フォームを追加する", f, :post_makes, partial: "post_body_fields", render_options: {locals: { body: @body }} %>
+                <%= link_to_add_association "+フォームを追加する", f, :post_makes, partial: "post_body_fields", render_options: {locals: { body: PostMake.new }} %>
               </div>
           </div>
         

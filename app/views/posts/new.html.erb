@@ -4,6 +4,11 @@
       <div class="text-center">
         <h1>投稿フォーム</h1>
       </div>
+      <% if @validation_errors&.length %>
+       <% @validation_errors.each do |error| %>
+        <p style="color: red;"><%= error %></p>
+        <% end %>
+      <% end %>
         
       <%= form_with model: @post, class: "form-inline", local: true do |f| %>
       
@@ -27,7 +32,7 @@
             </div>
             <div>
               <%= f.fields_for :post_materials do |form| %>
-                <%= render "post_materials_fields", :f => form, :material => form.object %>
+                <%= render "post_materials_fields", :f => form, :material => @material %>
               <% end %>
             </div>
               <!-- １）追加ボタンの記述 -->
@@ -45,7 +50,7 @@
               <h4>作り方</h4>
             </div>
               <%= f.fields_for :post_makes do |form| %>
-                <%= render "post_body_fields", :f => form, :body => form.object %>
+                <%= render "post_body_fields", :f => form, :body => @body %>
               <% end %>
               <!-- １）追加ボタンの記述 -->
               <div class="add-botton-box text-center mt-2 mb-3">

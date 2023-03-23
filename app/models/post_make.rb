@@ -1,7 +1,7 @@
 class PostMake < ApplicationRecord
   belongs_to :post
   
-  validates :explanation, presence: true
+  validates :explanation, presence: true,length: { minimum: 1 }
   
   has_one_attached :make_image
   

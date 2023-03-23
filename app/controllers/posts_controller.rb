@@ -14,8 +14,11 @@ class PostsController < ApplicationController
       redirect_to post_path(@post.id), notice: "投稿が完了しました."
     else
       flash[:notice] = "投稿に失敗しました"
+      @validation_errors = @post.errors&.full_messages || []
       @user = current_user
       @post = Post.new
+      @material = @post.post_materials.build
+      @body = @post.post_makes.build
       render :new
     end
   end
@@ -37,8 +40,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @material = PostMaterial.new
-    @body = PostMake.new
+    
+    
   end
 
   def update
@@ -51,6 +54,7 @@ class PostsController < ApplicationController
       render 'edit'
     end
   end
+  
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy

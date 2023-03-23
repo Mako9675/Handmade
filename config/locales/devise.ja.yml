@@ -26,6 +26,18 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      post_materials:
+        ing_name: 材料
+        quantity: 分量
+      post_material:
+        quantity: 分量
+        ing_name: 材料
+      post_makes:
+        explanation: 作り方
+      post_make:
+        explanation: 作り方
+      post:
+        title: タイトル
     models:
       user: ユーザー
   devise:

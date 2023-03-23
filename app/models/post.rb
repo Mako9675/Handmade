@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   enum status: { published: 0, draft: 1 }
   #published = 投稿する
   
-  validates :title, presence: true
+  validates :title, presence: true, length: {in: 1..50}
     
   has_one_attached :post_image
   
