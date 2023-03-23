@@ -34,4 +34,7 @@
 いらすとや（https://www.irasutoya.com/）
 
 photoAC（https://www.photo-ac.com/）
+・布と手芸用品の背景素材（16:9）/maako57さん
+・工具２/naonさん
 ・管理人室/fuktaroさん
+・カテゴリー　分類/ぼんくらさん
