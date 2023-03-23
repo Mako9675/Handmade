@@ -31,4 +31,7 @@
 - IDE：Cloud9
 - 
 ## 使用素材
-使用検討中です
+いらすとや（https://www.irasutoya.com/）
+
+photoAC（https://www.photo-ac.com/）
+・管理人室/fuktaroさん
