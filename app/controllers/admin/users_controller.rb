@@ -38,7 +38,7 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path
     else
       flash[:notice] = "有効にします"
-      redirect_to admin_user_path(@user.id)
+      redirect_to admin_users_path
     end
   end
   

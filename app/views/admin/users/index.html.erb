@@ -13,6 +13,13 @@
               <br>
               <br>登録日: <%= user.created_at.strftime('%Y/%m/%d') %>
             </td>
+            <td>
+              <% if user.is_deleted %>
+                退会済み
+              <% else %>
+                有効
+              <% end %>
+            </td>
             <td><%= link_to '詳細ページへ',admin_user_path(user.id), class: "user_#{user.id} btn btn-info btn-sm" %></td>
           </tr>
         <% end %>
