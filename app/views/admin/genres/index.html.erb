@@ -1,6 +1,9 @@
 <div class='container'>
   <div class='row'>
-    <div class="mx-auto col-sm-8 col-md-8 col-lg-8 px-5 px-sm-0">
+    
+    <%= image_tag 'ジャンル.jpg', width: '100%' %>
+    
+    <div class="mx-auto col-8 my-5">
       <h1>ジャンル登録</h1>
       
       <h3>ジャンル一覧</h3>
@@ -11,17 +14,19 @@
               <%= genre.name %>
             </td>
             <td>
-              <%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-sm btn-primary mx-1' %>
-              <%= link_to '削除',  admin_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+              <%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-sm btn-primary mx-1 ml-5' %>
+              <%= link_to admin_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true do %>
+                <i class="fa-solid fa-trash-can"></i> 削除
+              <% end %>
             </td>
           </tr>
           <% end %>
         </table>
      </div>
      <div class="col-4 mt-5">
-       <div class="genre_form">
+       <div class="form-inline">
         <%= form_with model: [:admin,@genre],local: true do |f| %>
-          <%= f.label :name, 'ジャンル名' %>
+          <%= f.label :name, 'ジャンル追加' %>
           <%= f.text_field :name, class: 'form-control' %>
           <%= f.submit '追加', class: 'btn btn-primary' %>
         <% end %>
