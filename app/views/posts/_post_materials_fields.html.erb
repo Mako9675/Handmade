@@ -1,16 +1,22 @@
 <div class="nested-fields">
   <div class="row mx-auto">
-    
-    <%= f.text_area :ing_name, placeholder: "材料", class: 'form-control' %>
+    <div class="col-4 mb-1 ml-4">
+    <%= f.text_field :ing_name, placeholder: "材料", class: 'form-control' %>
     <% if material.errors.include?(:ing_name) %>
       <p style="color: red;"><%= material.errors.full_messages_for(:ing_name).first %>
     <% end %>
-      
-    <%= f.text_area :quantity, placeholder: "分量", class: 'form-control' %>
+    </div>
+    
+    <div class="col-4 mx-1">
+    <%= f.text_field :quantity, placeholder: "分量", class: 'form-control' %>
     <% if material.errors.include?(:quantity) %>
       <p style="color: red;"><%= material.errors.full_messages_for(:quantity).first %>
     <% end %>
-      
-    <%= link_to_remove_association "フォームを削除", f %>
+    
+    </div>
+    
+    <div class="col-3">
+      <%= link_to_remove_association "フォームを削除", f %>
+    </div>
   </div>
 </div>

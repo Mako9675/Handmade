@@ -1,78 +1,77 @@
 <div class='container'>
   <div class='row'>
-    
-    <div class="mx-auto col-sm-12 col-md-9 col-lg-9 px-5 px-sm-0">
-      <h1>投稿編集</h1>
-      <%= form_with model: @post do |f| %>
-      <div class ="m-2">
-        <div class="form-group">
-          <%= f.label :post_image, 'サムネ画像' %>
-          <%= f.file_field :post_image, class: "form-control-file post_image", accept: 'image/*' %>
+    <div class="mx-auto col-9 mt-4">
+      <div class="text-center">
+        <h1>投稿編集</h1>
+      </div>
+        
+      <%= form_with model: @post, class: "form-inline", local: true do |f| %>
+      
+        <div class="form-group col-12 my-4">
+          <%= f.label :post_image, 'サムネ画像', class: "form-file-label" %>
+          <%= f.file_field :post_image, class: "form-file-button post_image", accept: 'image/*' %>
         </div>
         
-        <div class="field">
-          <%= f.label :title,'タイトル' %><br />
-          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control' %>
+        <div class="form-group col-12 mb-4">
+          <%= f.label :title,'タイトル' %>
+          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control col-sm-6 col-md-7' %>
           <% if @post.errors.include?(:title) %>
             <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
           <% end %>
         </div>
-      </div>
       
-     <div class="parent">
-        <div class="form-box">
-          <div class="forms-item">
-            <h4>材料</h4>
-          </div>
-          <div class ="m-2">
-            <%= f.fields_for :post_materials do |form| %>
-              <%= render "post_materials_fields", :f => form, :material => form.object %>
-            <% end %>
-            <!-- １）追加ボタンの記述 -->
-            <div class="add-botton-box">
-              <%= link_to_add_association "+フォームを追加する", f, :post_materials, partial: "post_materials_fields", render_options: { locals: { material: @material } } %>
+        <div class="parent">
+          <div class="form-box">
+            <div class="forms-item mx-5 mb-2 mt-4">
+              <h4>材料</h4>
             </div>
+            <div>
+              <%= f.fields_for :post_materials do |form| %>
+                <%= render "post_materials_fields", :f => form, :material => form.object %>
+              <% end %>
+            </div>
+              <!-- １）追加ボタンの記述 -->
+              <div class="add-botton-box text-center mt-2">
+                <%= link_to_add_association "+フォームを追加する", f, :post_materials, partial: "post_materials_fields", render_options: {locals: { material: @material }} %>
+              </div>
           </div>
+        
+          <div id="detail-association-insertion-point"></div>
+        </div>
+      
+        <div class="parent">
+          <div class="form-box">
+            <div class="forms-item mx-5 mb-2 mt-4">
+              <h4>作り方</h4>
+            </div>
+              <%= f.fields_for :post_makes do |form| %>
+                <%= render "post_body_fields", :f => form, :body => form.object %>
+              <% end %>
+              <!-- １）追加ボタンの記述 -->
+              <div class="add-botton-box text-center mt-2 mb-3">
+                <%= link_to_add_association "+フォームを追加する", f, :post_makes, partial: "post_body_fields", render_options: {locals: { body: @body }} %>
+              </div>
+          </div>
+        
+          <div id="detail-association-insertion-point"></div>
+        </div>
+      
+      <div class="form-group col-12 my-4">
+          <%= f.label :genre_id,'ジャンル' %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+      
+        <div class="form-group col-12 mb-4">
+          <%= f.label :status,'状態' %>
+          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
         </div>
         
-        <div id="detail-association-insertion-point"></div>
-      </div>
-      
-      <div class="parent">
-        <div class="form-box">
-          <div class="forms-item">
-            <h4>作り方</h4>
-          </div>
-          <div class ="m-2">
-            <%= f.fields_for :post_makes do |form| %>
-              <%= render "post_body_fields", :f => form, :body => form.object %>
-            <% end %>
-            <!-- １）追加ボタンの記述 -->
-            <div class="add-botton-box">
-              <%= link_to_add_association "+フォームを追加する", f, :post_makes, partial: "posts/post_body_fields", render_options: {locals: { body: @body }} %>
-            </div>
-          </div>
+        <div class="form-group col-12 mb-5 d-md-flex justify-content-md-end">
+          <%= f.submit '変更を保存する', class: "btn btn-success" %>
+          <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_post_#{@post.id} mx-2" do %>
+            削除する <i class="fas fa-trash-alt"></i>
+          <% end %>
         </div>
-        
-        <div id="detail-association-insertion-point"></div>
-      </div>
-      
-      <div class="field">
-        <%= f.label :genre_id,'ジャンル' %><br />
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
-      </div>
-        <%= f.submit "変更を保存する", class: 'btn btn-sm btn-success mx-1' %>
-      </div>
-      
-      <div>
-        <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" do %>
-          削除する <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </div>
       
       <% end %>
       

@@ -1,6 +1,8 @@
 class PostMake < ApplicationRecord
   belongs_to :post
   
+  validates :explanation, presence: true
+  
   has_one_attached :make_image
   
   def get_make_image(width, height)
