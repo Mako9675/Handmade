@@ -25,6 +25,8 @@
         <% end %>
         </tbody>
       </table>
+      
+      <%= paginate @users, thema: 'twitter-bootstrap-4' %>
     </div>
     
     <%= render 'layouts/sidebar', genres: @genres %>
