@@ -1,20 +1,43 @@
 <div class='container'>
   <div class='row'>
     
-   <div class="top col-12">
-      <%= image_tag 'メイン画像.jpg', width: '100%' %>
-      <h1>
-        管理者トップ画面
-      </h1>
-    </div>
+  <%= image_tag '管理者トップ.jpg', width: '100%' %>
+  
+  <div class="col-9 my-5">
+    <h1 class="text-center">管理者のトップページ</h1>
     
-    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
+    <table class="mx-auto mt-5">
+      <tr>
+        <td>
+          <%= link_to admin_users_path do %>
+            <%= image_tag 'ユーザー一覧.png', size: '100x130' %>
+          <% end %>
+        </td>
+        <td>ユーザー一覧</td>
+      </tr>
       
+      <tr>
+        <td>
+          <%= link_to posts_path do %>
+            <%= image_tag '投稿一覧.png', size: '100x130' %>
+          <% end %>
+        </td>
+        <td>投稿一覧</td>
+      </tr>
       
-      <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
-      <%= link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
-      <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark' %>
-    </div>
+      <tr>
+        <td>
+          <%= link_to admin_genres_path do %>
+            <%= image_tag 'ジャンル一覧.png', size: '140x130' %>
+          <% end %>
+        </td>
+        <td>ジャンル一覧</td>
+      </tr>
+      
+    </table>
+  </div>
+    
+  <%= render 'layouts/sidebar', genres: @genres %>
     
   </div>
 </div>
