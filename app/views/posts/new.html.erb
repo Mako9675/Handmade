@@ -19,7 +19,7 @@
       
         <div class="form-group col-12 mb-4">
           <%= f.label :title,'タイトル' %>
-          <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control col-sm-6 col-md-7' %>
+          <%= f.text_field :title, required: true, autofocus: true, autocomplete: "title", class: 'form-control col-sm-6 col-md-7' %>
           <% if @post.errors.include?(:title) %>
             <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
           <% end %>

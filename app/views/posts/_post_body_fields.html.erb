@@ -6,7 +6,7 @@
         <%= f.file_field :make_image, class: "form-file-button make_image", accept: 'image/*' %>
       </div>
       
-      <%= f.text_area :explanation, placeholder: "作り方", class: 'form-control col-8 ml-5' %>
+      <%= f.text_area :explanation, required: true, placeholder: "作り方", class: 'form-control col-8 ml-5' %>
       <% if body.errors.include?(:explanation) %>
         <p style="color: red;"><%= body.errors.full_messages_for(:explanation).first %>
       <% end %>
