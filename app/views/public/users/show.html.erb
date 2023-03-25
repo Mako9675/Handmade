@@ -38,9 +38,11 @@
       </div>
       
       <% if user_signed_in? && current_user.id != @user.id %>
-        <div id="follow_btn_<%= @user.id %>">
+      <div class='row'>
+        <div class="col text-right" id="follow_btn_<%= @user.id %>">
           <%= render "public/relationships/follow_bottan", user: @user %>
         </div>
+      </div>
       <% end %>
       
       <% if current_user == @user %>
