@@ -7,8 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
     name: '管理者',
-    email: 'test@gmail.com',
+    email: 'test@test.com',
     password: 'testtest',
+)
+
+User.create!(
+    name: 'テストユーザー',
+    email: 'user@test.com',
+    password: 'testtest',
+    introduction: 'テストユーザーです。',
 )
 
 Genre.create([
