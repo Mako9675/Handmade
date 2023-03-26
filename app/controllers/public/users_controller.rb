@@ -44,6 +44,13 @@ class Public::UsersController < ApplicationController
     @users = @user.followers
   end
 
+  def favorites
+    @genres = Genre.all
+    
+    @user = User.find(params[:id])
+    @favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.page(params[:page]).find(@favorites)
+  end
   
   private
   def user_params
@@ -55,14 +62,6 @@ class Public::UsersController < ApplicationController
     unless @user.id == current_user.id
       redirect_to public_user_path(current_user)
     end
-  end
-  
-  def favorites
-    @genres = Genre.all
-    @user = User.find(params[:id])
-    
-    @favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(@favorites)
   end
   
   def set_user
