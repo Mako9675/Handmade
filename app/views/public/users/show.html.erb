@@ -54,7 +54,7 @@
             <%= link_to confirm_posts_path, class: 'btn btn-info' do %>
               下書き一覧 <i class="far fa-file"></i>
             <% end %>
-            <%= link_to confirm_posts_path, class: 'btn btn-danger' do %>
+            <%= link_to favorites_public_user_path(@user), class: 'btn btn-danger' do %>
               いいね一覧 <i class="fas fa-hand-holding-heart"></i>
             <% end %>
           </div>

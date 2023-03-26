@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:update, :edit, ]
-  before_action :set_user, only: [:followings, :followers]
+  before_action :set_user, only: [:followings, :followers, :favorites]
   
   def show
     @user = User.find(params[:id])
@@ -55,6 +55,14 @@ class Public::UsersController < ApplicationController
     unless @user.id == current_user.id
       redirect_to public_user_path(current_user)
     end
+  end
+  
+  def favorites
+    @genres = Genre.all
+    @user = User.find(params[:id])
+    
+    @favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(@favorites)
   end
   
   def set_user
