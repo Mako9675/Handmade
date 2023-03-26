@@ -20,14 +20,11 @@
         <div class="form-group col-12 mb-4">
           <%= f.label :title,'タイトル' %>
           <%= f.text_field :title, required: true, autofocus: true, autocomplete: "title", class: 'form-control col-sm-6 col-md-7' %>
-          <% if @post.errors.include?(:title) %>
-            <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
-          <% end %>
         </div>
       
         <div class="parent">
-          <div class="form-box">
-            <div class="forms-item mx-5 mb-2 mt-4">
+          <div class="form-box row">
+            <div class="forms-item col-12 mx-5 mb-2 mt-4">
               <h4>材料</h4>
             </div>
             <div>
@@ -45,8 +42,8 @@
         </div>
       
         <div class="parent">
-          <div class="form-box">
-            <div class="forms-item mx-5 mb-2 mt-4">
+          <div class="form-box row">
+            <div class="forms-item col-12 mx-5 mb-2 mt-4">
               <h4>作り方</h4>
             </div>
               <%= f.fields_for :post_makes do |form| %>
