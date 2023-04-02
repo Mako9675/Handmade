@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
+    @comment.score = Language.get_data(comment_params[:comment]) 
     if @comment.save
       flash[:notice] = 'コメントを投稿しました'
       render :comment
