@@ -64,20 +64,28 @@ label {
   height: 50%;
   }
   
+  .about-box {
+    display: flex;
+  }
+  
   .ex1 {
-    width: 65%;
+    width: 50%;
+    display: flex;
+    align-items: center;
   }
   
   .ex2 {
-    width: 60%;
+    width: 30%;
+    display: flex;
+    align-items: center;
   }
   
   .ex3 {
-    width: 100%;
+    width: 50%;
   }
   
   .ex4 {
-    width: 65%;
+    width: 40%;
   }
 
 .about h1 {

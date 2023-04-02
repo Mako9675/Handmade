@@ -9,33 +9,24 @@
     
     <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5">
       <h2>＼ハンドメイド好きな人が自由に投稿するサイトです／</h2>
-      <table>
-        <tr>
-          <th>サイドバーから単語からorジャンルごとで<br>検索可能！！</th>
-          <th>
-            <%= image_tag 'ex1.png', class: "ex1" %>
-          </th>
-        </tr>
-        <tr>
-          <th class="ex2">
-            <%= image_tag 'ex2.png', class: "ex2" %>
-          </th>
-          <th>ログインしなくても投稿の閲覧可能！！</th>
-        </tr>
-        <tr>
-          <th>ぜひ登録して自分の投稿をみんなに発信しよう！！</th>
-          <th class="ex3">
-            <%= image_tag 'ex3.png', class: "ex3" %>
-          </th>
-        </tr>
-        <tr>
-          <td class="ex4">
-            <%= image_tag 'ex4.png', class: "ex4" %>
-          </td>
-          <th>いいねやコメントが多ければトップページのランキングに乗るかも？？</th>
-        </tr>
-        </tbody>
-      </table>
+      <div class="about-box my-3">
+        <h5 class="ex1">サイドバーから単語orジャンルごとで<br>検索可能！！</h5>
+        <%= image_tag 'ex1.png', class: "ex2" %>
+      </div>
+      
+      <div class="about-box mb-3">
+        <%= image_tag 'ex2.png', class: "ex1" %>
+        <h5 class="ex1">ログインしなくても投稿の閲覧可能！！</h5>
+      </div>
+      <div class="about-box">
+        <h5 class="ex1">ぜひ登録して自分の投稿を<br>みんなに発信しよう！！</h5>
+        <%= image_tag 'ex3.png', class: "ex1" %>
+      </div>
+      
+      <div class="about-box my-4">
+        <%= image_tag 'ex4.png', class: "ex1" %>
+        <h5 class="ex1">いいねやコメントが多ければトップページの<br>ランキングに乗るかも？？</h5>
+      </div>
     </div>
     
     <%= render 'layouts/sidebar', genres: @genres %>
