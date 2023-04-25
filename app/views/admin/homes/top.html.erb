@@ -4,37 +4,39 @@
   <%= image_tag '管理者トップ.jpg', width: '100%' %>
   
   <div class="col-9 my-5">
-    <h1 class="text-center">管理者のトップページ</h1>
+    <h2 class="text-center">管理者のトップページ</h2>
     
-    <table class="mx-auto mt-5">
-      <tr>
-        <td>
-          <%= link_to admin_users_path do %>
-            <%= image_tag 'ユーザー一覧.png', size: '100x130' %>
-          <% end %>
-        </td>
-        <td>ユーザー一覧</td>
-      </tr>
+    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5 ">
+      <div class="admin-box my-3">
+        <%= link_to admin_genres_path do %>
+          <%= image_tag '管理者作成.png', size: '100x130' %>
+        <% end %>
+        <h5 class="ml-5">管理者作成</h5>
+      </div>
+
+      <div class="admin-box my-3">
+        <%= link_to admin_users_path do %>
+          <%= image_tag 'ユーザー一覧.png', size: '110x130' %>
+        <% end %>
+        <h5 class="ml-5 ">ユーザー一覧</h5>
+      </div>
+
       
-      <tr>
-        <td>
-          <%= link_to posts_path do %>
-            <%= image_tag '投稿一覧.png', size: '100x130' %>
-          <% end %>
-        </td>
-        <td>投稿一覧</td>
-      </tr>
+      <div class="admin-box my-3">
+        <%= link_to posts_path do %>
+          <%= image_tag '投稿一覧.png', size: '100x130' %>
+        <% end %>
+        <h5 class="ml-5">投稿一覧</h5>
+      </div>
+
+      <div class="admin-box my-3">
+        <%= link_to admin_genres_path do %>
+          <%= image_tag 'ジャンル一覧.png', size: '140x130' %>
+        <% end %>
+        <h5 class="ml-5">ジャンル一覧</h5>
+      </div>
+    </div>
       
-      <tr>
-        <td>
-          <%= link_to admin_genres_path do %>
-            <%= image_tag 'ジャンル一覧.png', size: '140x130' %>
-          <% end %>
-        </td>
-        <td>ジャンル一覧</td>
-      </tr>
-      
-    </table>
   </div>
     
   <%= render 'layouts/sidebar', genres: @genres %>
