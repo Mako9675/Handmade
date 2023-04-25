@@ -13,7 +13,7 @@ class Admin::OwnersController < ApplicationController
   def update
     @owner = Admin.find(params[:id])
     if @owner.update(admin_params)
-      redirect_to admin_owners_path, notice: "プロフィールを更新しました."
+      redirect_to admin_owner_path(current_admin), notice: "プロフィールを更新しました."
     else
       render :edit
     end
@@ -21,7 +21,7 @@ class Admin::OwnersController < ApplicationController
   
   private
   def admin_params
-    params.require(:admin).permit( :name, :email, :introduction, :owner_image)
+    params.require(:admin).permit(:name, :email, :introduction, :owner_image)
   end
   
 end

@@ -5,7 +5,7 @@
         <h2>プロフィール編集</h2>
       </div>
         
-      <%= form_with model: [:admin,@owner],url: admin_owners_path, class: "form-inline", local:true do |f| %>
+      <%= form_with model: [:admin,@owner],url: admin_owner_path, class: "form-inline", local:true do |f| %>
         <% if @owner.errors.any? %>
           <%= @owner.errors.count %>件のエラーが発生しました
         <% end %>
