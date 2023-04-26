@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     get '/top' => 'homes#top', as: 'top'
-    resources :owners,  only: [:show, :edit, :update]
+    resources :owners,  only: [:index, :show, :edit, :update]
     resources :genres, except: [:new, :show]
     resources :users, only: [:index, :show, :edit, :update]
     patch "withdrawal/:id" => "users#withdrawal", as: "withdrawal"

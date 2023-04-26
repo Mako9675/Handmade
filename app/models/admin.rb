@@ -10,6 +10,9 @@ class Admin < ApplicationRecord
   
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :password, length: { minimum: 6 }, on: :create
+  validates :encrypted_password, presence: true, on: :create
+  validates :password, presence: true, on: :create
   
   def get_owner_image(width, height)
     unless owner_image.attached?

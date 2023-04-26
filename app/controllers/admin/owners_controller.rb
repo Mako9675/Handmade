@@ -1,6 +1,11 @@
 class Admin::OwnersController < ApplicationController
   before_action :authenticate_admin!
   
+  def index
+    @genres = Genre.all
+    @owners = Admin.all.page(params[:page]).per(10)
+  end
+  
   def show
     @genres = Genre.all
     @owner = Admin.find(params[:id])
