@@ -32,7 +32,7 @@
           パスワード<br>(6文字以上)
         <% end %>
         <%= f.password_field :password, class: 'form-control col-sm-6 col-md-7' %>
-        <% if @user.errors.include?(:password) %>
+        <% if @admin.errors.include?(:password) %>
           <p style="color: red;"><%= @admin.errors.full_messages_for(:password).first %>
         <% end %>
       </div>
@@ -42,7 +42,7 @@
           パスワード<br>(確認用)
         <% end %>
         <%= f.password_field :password_confirmation, class: 'form-control col-sm-6 col-md-7' %>
-        <% if @user.errors.include?(:password_confirmation) %>
+        <% if @admin.errors.include?(:password_confirmation) %>
           <p style="color: red;"><%= @admin.errors.full_messages_for(:password_confirmation).first %>
         <% end %>
       </div>

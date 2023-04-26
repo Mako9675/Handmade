@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
 }
 
-  devise_for :admins, skip: [:passwords] ,controllers: {
+  devise_for :admin, skip: [:passwords] ,controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
 }
