@@ -12,6 +12,7 @@ class Admin::OwnersController < ApplicationController
   end
 
   def edit
+    render :layout => 'nosidebar'
     @owner = Admin.find(params[:id])
   end
   

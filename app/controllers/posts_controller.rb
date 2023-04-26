@@ -41,8 +41,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    render :layout => 'nosidebar'
     @post = Post.find(params[:id])
-    
     
   end
 

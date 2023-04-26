@@ -11,6 +11,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    render :layout => 'nosidebar'
     @user = User.find(params[:id])
   end
   
@@ -24,6 +25,7 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
+    render :layout => 'nosidebar'
   end
 
   def withdrawal

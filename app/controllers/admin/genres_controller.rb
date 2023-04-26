@@ -19,6 +19,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
+    render :layout => 'nosidebar'
     @genre = Genre.find(params[:id])
   end
 

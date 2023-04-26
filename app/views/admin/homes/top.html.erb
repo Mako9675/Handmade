@@ -6,7 +6,7 @@
   <div class="col-9 my-5">
     <h2 class="text-center">管理者のトップページ</h2>
     
-    <div class="mx-auto col-sm-12 col-md-8 col-lg-9 my-5 ">
+    <div class="mx-auto col-10 my-5 ">
       <div class="admin-box my-3">
         <%= link_to new_admin_registration_path do %>
           <%= image_tag '管理者作成.png', size: '100x130' %>
@@ -45,8 +45,6 @@
     </div>
       
   </div>
-    
-  <%= render 'layouts/sidebar', genres: @genres %>
     
   </div>
 </div>

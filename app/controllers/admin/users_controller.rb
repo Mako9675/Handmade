@@ -16,6 +16,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    render :layout => 'nosidebar'
     @user = User.find(params[:id])
   end
 
