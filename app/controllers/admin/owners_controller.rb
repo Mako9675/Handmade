@@ -41,6 +41,12 @@ class Admin::OwnersController < ApplicationController
     redirect_to admin_owners_path, notice: "管理者を作成しました."
   end
   
+  def admin_destroy
+    @owner = Admin.find(params[:id])
+    @owner.destroy
+    redirect_to admin_owners_path, notice: "管理者を削除しました."
+  end
+  
   
   private
   def admin_params
