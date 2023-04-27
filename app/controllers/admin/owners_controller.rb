@@ -12,8 +12,8 @@ class Admin::OwnersController < ApplicationController
   end
 
   def edit
-    render :layout => 'nosidebar'
     @owner = Admin.find(params[:id])
+    render :layout => 'nosidebar'
   end
   
   def update
@@ -24,6 +24,23 @@ class Admin::OwnersController < ApplicationController
       render :edit
     end
   end
+  
+  def add
+    @admin = Admin.new
+    render :layout => 'nosidebar'
+  end
+  
+  def admin_create
+
+    @admin = Admin.create!(
+      name: params[:admin][:name],#'管理者',
+      email: params[:admin][:email],#'test@test.com',
+      password: params[:admin][:password]#'testtest',
+    )
+    
+    redirect_to admin_owners_path, notice: "管理者を作成しました."
+  end
+  
   
   private
   def admin_params

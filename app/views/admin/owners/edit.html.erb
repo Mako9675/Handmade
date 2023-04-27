@@ -10,32 +10,32 @@
           <%= @owner.errors.count %>件のエラーが発生しました
         <% end %>
         
-      <div class="form-group col-12 my-4">
-        <%= f.label :name,'名前' %>
-        <%= f.text_field :name, class: 'form-control col-sm-6 col-md-7',placeholder: "名前" %>
-        <% if @owner.errors.include?(:name) %>
-          <p style="color: red;"><%= @owner.errors.full_messages_for(:name).first %>
-        <% end %>
-      </div>
-      
-      <div class="form-group col-12 my-4">
-        <%= f.label :email,'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control col-sm-6 col-md-7', placeholder: "sample@example.com" %>
-        <% if @owner.errors.include?(:email) %>
-          <p style="color: red;"><%= @owner.errors.full_messages_for(:email).first %>
-        <% end %>
-      </div>
-      
-      <div class="form-group col-12 mb-4">
-        <%= f.label :owner_image, 'プロフィール画像', class: "form-file-label" %>
-        <%= f.file_field :owner_image, class: "form-file-button owner_image", accept: 'image/*' %>
-      </div>
-      
-      <div class="form-group col-12 mb-4 text-center">
-        <div class="col">
-          <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        <div class="form-group col-12 my-4">
+          <%= f.label :name,'名前' %>
+          <%= f.text_field :name, class: 'form-control col-sm-6 col-md-7',placeholder: "名前" %>
+          <% if @owner.errors.include?(:name) %>
+            <p style="color: red;"><%= @owner.errors.full_messages_for(:name).first %>
+          <% end %>
         </div>
-      </div>
+      
+        <div class="form-group col-12 my-4">
+          <%= f.label :email,'メールアドレス' %>
+          <%= f.email_field :email, class: 'form-control col-sm-6 col-md-7', placeholder: "sample@example.com" %>
+          <% if @owner.errors.include?(:email) %>
+            <p style="color: red;"><%= @owner.errors.full_messages_for(:email).first %>
+          <% end %>
+        </div>
+      
+        <div class="form-group col-12 mb-4">
+          <%= f.label :owner_image, 'プロフィール画像', class: "form-file-label" %>
+          <%= f.file_field :owner_image, class: "form-file-button owner_image", accept: 'image/*' %>
+        </div>
+      
+        <div class="form-group col-12 mb-4 text-center">
+          <div class="col">
+            <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+          </div>
+        </div>
         
       <% end %>
       
