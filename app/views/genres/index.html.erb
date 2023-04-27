@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @genre.post.each do |post| %>
+        <% @posts.each do |post| %>
            <tr>
             <td><%= image_tag post.get_post_image(100,100) %></td>
             <td>
@@ -33,7 +33,7 @@
         </tbody>
       </table>
       
-      <%= paginate @genre, thema: 'twitter-bootstrap-4' %>
+      <%= paginate @posts, thema: 'twitter-bootstrap-4' %>
     </div>
     
   </div>

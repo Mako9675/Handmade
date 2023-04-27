@@ -1,7 +1,8 @@
 class GenresController < ApplicationController
   def index
     @genres = Genre.all
-    @genre = Genre.published.find(params[:id]).page(params[:page])
+    @genre = Genre.find(params[:id])
+    @posts = Post.where(genre_id: params[:id]).published.page(params[:page])
   end
   
    private
