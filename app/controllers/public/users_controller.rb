@@ -47,7 +47,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @genres = Genre.all
     
-    favorites = Favorite.where(user_id: user.id).pluck(:post_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.page(params[:page]).find(favorites)
   end
   

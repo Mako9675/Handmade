@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   
-  layout 'noside'
+  layout 'nosidebar'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
