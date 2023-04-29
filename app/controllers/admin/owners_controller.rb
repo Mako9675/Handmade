@@ -32,19 +32,28 @@ class Admin::OwnersController < ApplicationController
   
   def admin_create
 
-    @admin = Admin.create!(
+    if @admin = Admin.create!(
       name: params[:admin][:name],#'管理者',
       email: params[:admin][:email],#'test@test.com',
       password: params[:admin][:password]#'testtest',
     )
     
     redirect_to admin_owners_path, notice: "管理者を作成しました."
+    
+    else
+      flash[:notice] = "修正に失敗しました"
+      redirect_to admin_owners_path
+    end
   end
   
   def admin_destroy
     @owner = Admin.find(params[:id])
-    @owner.destroy
-    redirect_to admin_owners_path, notice: "管理者を削除しました."
+    if @owner.destroy
+      redirect_to admin_owners_path, notice: "管理者を削除しました."
+    else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to admin_owners_path
+    end
   end
   
   

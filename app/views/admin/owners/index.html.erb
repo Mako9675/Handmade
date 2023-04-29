@@ -9,10 +9,10 @@
           <tr>
             <td class="img-admin-fit-radius"><%= image_tag owner.get_owner_image(100,100) %></td>
             <td>
-              <%= link_to owner.name, admin_owner_path(owner.id) %>
+              <%= link_to owner.name, admin_owner_path(owner) %>
             </td>
             <td>
-              <%= link_to @owner, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-5" do %>
+              <%= link_to admin_admin_destroy_path(owner), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-5" do %>
                 削除する <i class="fas fa-trash-alt"></i>
               <% end %>
             </td>

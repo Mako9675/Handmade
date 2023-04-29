@@ -41,8 +41,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/top' => 'homes#top', as: 'top'
     get '/add' => 'owners#add', as: 'add'
-    post '/admin_create' => 'owners#admin_create'
-    delete '/admin_destroy' => 'owners#admin_destroy'
+    post '/admin_create' => 'owners#admin_create', as: "admin_create"
+    delete '/admin_destroy/:id' => 'owners#admin_destroy', as: "admin_destroy"
     resources :owners,  only: [:index, :show, :edit, :update]
     resources :genres, except: [:new, :show]
     resources :users, only: [:index, :show, :edit, :update]
