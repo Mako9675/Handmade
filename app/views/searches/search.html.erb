@@ -7,15 +7,20 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr>
-              <td><%= image_tag post.get_post_image(100,100) %></td>
-              <td><%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %></td>
-              <td><%= post.genre.name %></td>
-              <td>コメント数: <%= post.comments.count %></td>
-              <td>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= post.favorites.count %> いいね
-              </td>
-            </tr>
+            <td><%= image_tag post.get_post_image(100,100) %></td>
+            <td>
+              <%= link_to post.title, post_path(post.id), class: "post_#{post.id}" %>
+              <br>
+              <br>作成:<%= link_to post.user.name,public_user_path(post.user.id) %>
+              <br><%= post.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td><%= post.genre.name %></td>
+            <td><i class="fas fa-comment"></i>コメント数: <%= post.comments.count %></td>
+            <td>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= post.favorites.count %> いいね
+            </td>
+          </tr>
           <% end %>
         </tbody>
           <% if @posts.size == 0 %>
