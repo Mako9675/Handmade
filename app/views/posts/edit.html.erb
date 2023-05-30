@@ -5,6 +5,13 @@
         <h1>投稿編集</h1>
       </div>
         
+      
+      <% if @validation_errors&.length %>
+       <% @validation_errors.each do |error| %>
+        <p style="color: red;"><%= error %></p>
+        <% end %>
+      <% end %>
+      
       <%= form_with model: @post, class: "form-inline", local: true do |f| %>
       
         <div class="form-group col-12 my-4">
@@ -15,9 +22,6 @@
         <div class="form-group col-12 mb-4">
           <%= f.label :title,'タイトル' %>
           <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control col-sm-6 col-md-7' %>
-          <% if @post.errors.include?(:title) %>
-            <p style="color: red;"><%= @post.errors.full_messages_for(:title).first %>
-          <% end %>
         </div>
       
         <div class="parent">
